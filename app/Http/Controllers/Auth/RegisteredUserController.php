@@ -21,8 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $data['loc']= DB::table('locations')->get();
-        return view('auth.register',$data);
+        $data['loc'] = DB::table('locations')->get();
+        return view('auth.register', $data);
     }
 
     /**
@@ -40,14 +40,23 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $user_img = null;
+
+        if ($request->hasFile('user_img')) {
+            $ext = $request->user_img->getClientOriginalExtension();
+            $newFileName = time() . '.' . $ext;
+            $request->user_img->move(public_path() . '/img/user/', $newFileName);
+            $user_img = $newFileName;
+        }
+
         $user = User::create([
             'name' => $request->name,
             'number' => $request->number,
             'email' => $request->email,
+            'user_img' => $user_img,
             'location' => $request->location,
             'password' => Hash::make($request->password),
         ]);
-
         event(new Registered($user));
 
         Auth::login($user);
