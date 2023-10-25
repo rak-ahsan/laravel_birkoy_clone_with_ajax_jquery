@@ -16,8 +16,8 @@
         </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h2>{{ Auth::user()->name }} </h2></li>
-                <li class="list-group-item"><h5>01775566772</h5></li>
-                <li class="list-group-item"><h5>Dhaka</h5></li>
+                <li class="list-group-item"><h5>{{ Auth::user()->number }}</h5></li>
+                <li class="list-group-item"><h5>{{ Auth::user()->location }}</h5></li>
                 <li class="list-group-item"><h5>{{ Auth::user()->email }}</h5></li>
             </ul>
         </div>
