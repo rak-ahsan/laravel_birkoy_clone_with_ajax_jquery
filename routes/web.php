@@ -6,6 +6,7 @@ use App\Http\Controllers\AlladsController;
 use App\Http\Controllers\CatagoriesController;
 use App\Http\Controllers\ProductViewController;
 use App\Http\Controllers\ChatModelController;
+use App\Http\Controllers\HomemodelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::view('/', 'Frontend/content');
+// Route::view('/', 'Frontend/content');
 
 
 Route::controller(ProductController::class)->group(function () {
@@ -41,6 +42,12 @@ Route::controller(ProductController::class)->group(function () {
     Route::get('/welcome', 'index')->name('rakib');
 });
 
+
+Route::controller(HomemodelController::class)->group(function () {
+
+    Route::get('/', 'index')->name('home');
+    Route::get('/category/{username}', 'cata')->name('username');
+});
 
 
 Route::middleware('auth')->controller(AlladsController::class)->group(function () {
@@ -65,6 +72,11 @@ Route::controller(ChatModelController::class)->group(function () {
 
 Route::controller(CatagoriesController::class)->group(function () {
 
-    Route::get('/catagoriesadd', 'create')->name('catagoriesadd');
+    Route::get('/categories', 'index')->name('category.index');
+    Route::get('/category/create', 'create')->name('category.create');
+    Route::post('/category', 'store')->name('category.store');
+    Route::get('/category/{cata_id}/edit', 'show')->name('category.show');
+    Route::post('/category/{cata_id}', 'update')->name('category.update');
+    Route::get('/category/destroy/{cata_id}', 'destroy')->name('category.destroy');
 });
 require __DIR__ . '/auth.php';

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Catagories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CatagoriesController extends Controller
 {
@@ -12,7 +14,8 @@ class CatagoriesController extends Controller
      */
     public function index()
     {
-        //
+        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(5);
+        return view('backend.catagories.catagoryview', $data);
     }
 
     /**
@@ -20,7 +23,7 @@ class CatagoriesController extends Controller
      */
     public function create()
     {
-        return view('backend.catagories.addcatagories');
+        return view('backend.catagories.categorycreate');
     }
 
     /**
@@ -28,15 +31,26 @@ class CatagoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = Validator::make($request->all(), [
+            'cata_name' => 'required',
+            'cata_icon' => 'required',
+            'cata_username' => 'required'
+        ]);
+
+        if ($validator->passes()) {
+            Catagories::create($request->post());
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Catagories $catagories)
+    public function show($cata_id)
     {
-        //
+        $data['cata'] = Catagories::find($cata_id);
+
+        return view('backend.catagories.categoryupdate', $data);
     }
 
     /**
@@ -50,16 +64,27 @@ class CatagoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Catagories $catagories)
+    public function update(Request $request, Catagories $catagories, $cata_id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'cata_name' => 'required',
+            'cata_icon' => 'required',
+            'cata_username' => 'required'
+        ]);
+
+        if ($validator->passes()) {
+            $catagories = Catagories::find($cata_id);
+            $catagories->fill($request->post())->save();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Catagories $catagories)
+    public function destroy(Catagories $catagories, $cata_id)
     {
-        //
+        $data = Catagories::find($cata_id);
+        $data->delete();
+        return back();
     }
 }

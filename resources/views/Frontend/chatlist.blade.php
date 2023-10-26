@@ -6,7 +6,7 @@
             <div class="col">
                 <b>My Chats</b>
             </div>
-            <a href="" class="nav-link">
+            <a id="la" class="nav-link">
                 <div class="col d-flex mt-3">
                     <div class="img col-md-2">
                         <img src="{{ asset('img/p.jpg') }}" style="height: 50px; border-radius:50%">
@@ -33,8 +33,30 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">b</div>
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row">
+                    <div class="load">
+                        <span>please select your conversation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @include('Frontend/layout/footer');
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#la').click(function(e){
+            e.preventDefault();
+            $('.load').load('/')
+        })
+    });
+</script>
 @endsection

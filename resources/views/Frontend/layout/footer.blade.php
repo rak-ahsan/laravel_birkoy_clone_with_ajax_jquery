@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-md-4 mb-2">
             <div class="play mx-2 d-flex">
-              <a href="">  <img src={{'img/play.png'}} alt="" srcset="" style="border-radius: 10px; height:50px;width:150px"></a>
-               <a href=""> <img src={{'img/apple.png'}} alt="" srcset="" style="border-radius: 10px; height:50px;width:150px"></a>
+              <a href="">  <img src={{asset('img/play.png')}} alt="" srcset="" style="border-radius: 10px; height:50px;width:150px"></a>
+               <a href=""> <img src={{asset('img/apple.png')}} alt="" srcset="" style="border-radius: 10px; height:50px;width:150px"></a>
             </div>
             <div class="mt-3">
                 <b>Connect WIth Us</b> <br> 

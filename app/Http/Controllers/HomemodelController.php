@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catagories;
 use App\Models\Homemodel;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,14 @@ class HomemodelController extends Controller
      */
     public function index()
     {
-        //
+        $data['cata'] = Catagories::orderBy('cata_id', 'DESC')->get();
+        return view('Frontend.content', $data);
+    }
+
+    public function cata($username)
+    {
+        $data['username'] = $username;
+        return view('Frontend.layout.browsbycata', $data);
     }
 
     /**

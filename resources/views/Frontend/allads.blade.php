@@ -24,23 +24,11 @@
   <div class="row">
     <div class="col-md-4" style="border-right: 1px solid rgb(200, 200, 200)">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
-        <li class="list-group-item"><a href="" class="nav-link">Mobiles </a></li>
+        @foreach ($catagory as $list)
+        <li class="list-group-item"><a href="{{ route('username',$list->cata_username) }}" class="nav-link">{{$list->cata_name}} </a></li>
+        @endforeach
       </ul>
+      {{ $catagory->links()}}
     </div>
     <div class="col-md-8 p-3">
       <p><b>Buy, Sell, Rent or Find Anything in Bangladesh</b></p>

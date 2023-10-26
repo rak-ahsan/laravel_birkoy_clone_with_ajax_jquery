@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catagories;
 use Illuminate\Http\Request;
 
 class AlladsController extends Controller
@@ -11,7 +12,8 @@ class AlladsController extends Controller
      */
     public function index()
     {
-        return view('Frontend.allads');
+        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(30);
+        return view('Frontend.allads', $data);
     }
 
     /**
