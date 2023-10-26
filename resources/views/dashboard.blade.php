@@ -12,7 +12,7 @@
         
         <div class="col-md-4" style="border-right: 1px solid rgb(200, 200, 200)">
         <div class="dp col-md-4">
-            <img src="{{ asset('img/dp.jpg') }}" alt="" srcset="" class="img-thumbnail">
+        <img src="{{ asset('img/user/' . Auth::user()->user_img) }}" alt="" srcset="" class="img-thumbnail">
         </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h2>{{ Auth::user()->name }} </h2></li>

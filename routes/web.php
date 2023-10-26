@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\AlladsController;
+use App\Http\Controllers\CatagoriesController;
 use App\Http\Controllers\ProductViewController;
 use App\Http\Controllers\ChatModelController;
 use Illuminate\Support\Facades\Route;
@@ -62,5 +63,8 @@ Route::controller(ChatModelController::class)->group(function () {
     Route::get('/chat', 'index')->name('chat');
 });
 
+Route::controller(CatagoriesController::class)->group(function () {
 
+    Route::get('/catagoriesadd', 'create')->name('catagoriesadd');
+});
 require __DIR__ . '/auth.php';
