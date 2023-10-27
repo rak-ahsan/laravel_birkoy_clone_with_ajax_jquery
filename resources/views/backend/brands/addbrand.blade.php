@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Catagories</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Brand</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -13,8 +13,8 @@
                     @csrf
                     <div id="msg" class="text-danger mb-3"></div>
                     <div class="form-group">
-                        <label for="exampleInputUsername1">Category Name</label>
-                        <input type="text" class="form-control" id="cata_name"
+                        <label for="exampleInputUsername1">Brand Name</label>
+                        <input type="text" class="form-control" id="brand_name"
                             placeholder="Category Name" name="cata_name">
                     </div>
                     <div class="form-group">

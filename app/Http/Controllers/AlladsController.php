@@ -19,9 +19,9 @@ class AlladsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function adspost()
     {
-        //
+        return view('Frontend.addspost');
     }
 
     /**

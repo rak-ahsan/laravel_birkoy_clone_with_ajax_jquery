@@ -53,6 +53,7 @@ Route::controller(HomemodelController::class)->group(function () {
 Route::middleware('auth')->controller(AlladsController::class)->group(function () {
 
     Route::get('/allads', 'index')->name('ads');
+    Route::get('/post-add', 'adspost')->name('ads');
 });
 
 Route::controller(ProductViewController::class)->group(function () {
