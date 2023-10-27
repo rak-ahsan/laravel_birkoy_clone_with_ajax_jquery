@@ -49,7 +49,7 @@
             </li>
                 @endif
                   <li class="nav-item px-2">
-                    <a class="nav-link active btn text-dark p-2" aria-current="page" href="#" style="background-color: #ffc800"><b>POST YOUR AD</b></a>
+                    <a class="nav-link active btn text-dark p-2" aria-current="page" href="{{ route('adspost') }}" style="background-color: #ffc800"><b>POST YOUR AD</b></a>
                   </li>
               </ul>
           </div>
