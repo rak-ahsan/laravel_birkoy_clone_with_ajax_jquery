@@ -47,7 +47,7 @@
                   </div>
             </div>
         </div>
-    </form>
+    </form> 
 </div>
 @include('Frontend/layout/footer');
 @endsection
