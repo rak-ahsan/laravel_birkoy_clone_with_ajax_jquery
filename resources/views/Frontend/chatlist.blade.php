@@ -42,7 +42,7 @@
                         <div class="message">Lorem ipsum dolor sit amet,
                             consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </div>
                     </li>
-                    <li class="me">
+                    {{-- <li class="me">
                         <div class="entete">
                             <h3>10:12AM,
                                 Today</h3>
@@ -79,10 +79,9 @@
                         </div>
                         <div class="triangle"></div>
                         <div class="message">OK </div>
-                    </li>
+                    </li> --}}
                 </ul>
                 <form action="">
-
                     <div class="col-md-12"><textarea class="form-control" placeholder="Enter Description"
                             id="floatingTextarea2" style="height: 100px"></textarea>
                     </div>
