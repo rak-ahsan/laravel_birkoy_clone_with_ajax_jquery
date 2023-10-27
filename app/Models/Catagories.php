@@ -15,4 +15,6 @@ class Catagories extends Model
         'cata_icon',
         'cata_username'
     ];
+
+    // protected $guarded = [];
 }
