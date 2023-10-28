@@ -26,6 +26,7 @@ return new class extends Migration
             // $table->string('photos');
             $table->string('pos_number');
             $table->integer('user_id');
+            $table->timestamps();
         });
     }
 

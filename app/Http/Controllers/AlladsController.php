@@ -34,24 +34,26 @@ class AlladsController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     // 'ads_loc' => 'required',
-        //     // 'ads_cata' => 'required',
-        //     // 'condtions' => 'required',
-        //     // 'title' => 'required',
-        //     // 'authenticity' => 'required',
-        //     // 'brand' => 'required',
-        //     // 'model' => 'required',
-        //     // 'desc' => 'required',
-        //     // 'price' => 'required',
-        //     // 'nego' => 'required',
-        //     // 'pos_number' => 'required',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'ads_loc' => 'required',
+            'ads_cata' => 'required',
+            'condtions' => 'required',
+            'title' => 'required',
+            'authenticity' => 'required',
+            'brand' => 'required',
+            'model' => 'required',
+            'desc' => 'required',
+            'price' => 'required',
+            'nego' => 'required',
+            'pos_number' => 'required',
+        ]);
 
-        // if ($validator->passes()) {
-        //     postads::create($request->post());
-        // }
-        postads::create($request->post());
+        if ($validator->passes()) {
+            postads::create($request->post());
+            return redirect()->route('adspost');
+        } else {
+            return redirect()->route('adspost')->withErrors($validator)->withInput();
+        }
     }
 
     /**

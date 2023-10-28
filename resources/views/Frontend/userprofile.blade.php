@@ -17,7 +17,12 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h2>Rakib Ahsan </h2></li>
                 <li class="list-group-item"><h5>01775566772</h5></li>
-                <li class="list-group-item"><h5>Dhaka</h5></li>
+                <li class="list-group-item"><h5>55</h5></li>
+            </ul>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h5><a href="#" class="nav-link">Ads Status</a></h5></li>
+                <li class="list-group-item"><h5>01775566772</h5></li>
+                <li class="list-group-item"><h5>55</h5></li>
             </ul>
         </div>
         <!-- mainpart -->
