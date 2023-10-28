@@ -31,7 +31,13 @@
         </div>
         <hr>
         <div class="row" style="background-color: #fff">
-            <label for="" class="text-center fw-bolder mt-5">Conditions</label>
+        <div class="top-f  d-flex justify-content-around align-items-center mb-5">
+                <div class="col-md-6">
+                    <label for="" class="text-end fw-bolder mt-5">Post Title</label>
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="tital">
+                </div>
+            </div>
+            <label for="" class="text-center fw-bolder mt-3">Conditions</label>
             <div class="main d-flex justify-content-around align-items-center">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
