@@ -1,7 +1,7 @@
 @extends('Frontend.layout.Head')
 @section('content')
 <div class="container">
-    <form action="">
+    <form action="{{ route('adstore') }}" method="POST">
         @csrf
         <div class="row">
             <div class="formdesign mt-4 p-3" style="background-color: #fff">
@@ -10,19 +10,19 @@
                         <b>Fill in the details</b>
                     </div>
                     <div class="top-f col-md-3 text-center">
-                        <select class="form-select form-select-sm" aria-label="Small select example">
+                        <select class="form-select form-select-sm" aria-label="Small select example" name='ads_loc'>
                             <option selected>Please Select Location</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach ($location as $row)
+                            <option value="{{$row->loc_id}}">{{$row->loc_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="top-f col-md-3 text-end">
-                        <select class="form-select form-select-sm" aria-label="Small select example">
+                        <select class="form-select form-select-sm" aria-label="Small select example"  name='ads_cata'>
                             <option selected>Please Select Catagories</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach ($catagory as $row)
+                            <option value="{{$row->cata_id}}">{{$row->cata_name}}</option>
+                            @endforeach
                         </select>
 
                     </div>
@@ -31,22 +31,22 @@
         </div>
         <hr>
         <div class="row" style="background-color: #fff">
-        <div class="top-f  d-flex justify-content-around align-items-center mb-5">
+            <div class="top-f  d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-5">Post Title</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="tital">
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="title" name='title'>
                 </div>
             </div>
             <label for="" class="text-center fw-bolder mt-3">Conditions</label>
             <div class="main d-flex justify-content-around align-items-center">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="condtions" id="flexRadioDefault1" value="used">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Used
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="condtions" id="flexRadioDefault2" value="new">
                     <label class="form-check-label" for="flexRadioDefault2">
                         New
                     </label>
@@ -55,13 +55,13 @@
             <label for="" class="text-center fw-bolder mt-5">Authenticity</label>
             <div class="main d-flex justify-content-around">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                    <input class="form-check-input" type="radio" name="authenticity" id="flexRadioDefault3" value="orginal">
                     <label class="form-check-label" for="flexRadioDefault3">
                         Original
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                    <input class="form-check-input" type="radio" name="authenticity" id="flexRadioDefault4" value="refurbished" checked>
                     <label class="form-check-label" for="flexRadioDefault4">
                         Refurbished
                     </label>
@@ -70,33 +70,33 @@
             <div class="top-f  d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-5">Brand</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="Brand">
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="Brand" name="brand">
                 </div>
             </div>
             <div class="top-f  d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-3">Model</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="Model">
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="Model" name="model">
                 </div>
             </div>
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-3">Product Description</label>
                     <textarea class="form-control" placeholder="Enter Description" id="floatingTextarea2"
-                        style="height: 100px"></textarea>
+                        style="height: 100px" name="desc"></textarea>
                 </div>
             </div>
 
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-3">Product Price</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="Price">
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="Price" name="price">
                 </div>
             </div>
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="nego">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Negotiable</label>
                     </div>
                 </div>

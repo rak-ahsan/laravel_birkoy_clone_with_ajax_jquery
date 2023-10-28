@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catagories;
+use App\Models\location;
+use App\Models\postads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AlladsController extends Controller
 {
@@ -21,7 +24,9 @@ class AlladsController extends Controller
      */
     public function adspost()
     {
-        return view('Frontend.addspost');
+        $data['location'] = location::orderBy('loc_id', 'DESC')->get();
+        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
+        return view('Frontend.addspost', $data);
     }
 
     /**
@@ -29,7 +34,24 @@ class AlladsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validator = Validator::make($request->all(), [
+        //     // 'ads_loc' => 'required',
+        //     // 'ads_cata' => 'required',
+        //     // 'condtions' => 'required',
+        //     // 'title' => 'required',
+        //     // 'authenticity' => 'required',
+        //     // 'brand' => 'required',
+        //     // 'model' => 'required',
+        //     // 'desc' => 'required',
+        //     // 'price' => 'required',
+        //     // 'nego' => 'required',
+        //     // 'pos_number' => 'required',
+        // ]);
+
+        // if ($validator->passes()) {
+        //     postads::create($request->post());
+        // }
+        postads::create($request->post());
     }
 
     /**

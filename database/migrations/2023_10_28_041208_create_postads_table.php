@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('postads', function (Blueprint $table) {
             $table->id('ads_id');
-            $table->number('ads_loc');
-            $table->number('ads_cata');
+            $table->integer('ads_loc');
+            $table->integer('ads_cata');
             $table->string('condtions');
+            $table->string('title');
             $table->string('authenticity');
             $table->string('brand');
             $table->string('model');
             $table->string('desc');
-            $table->number('price');
+            $table->integer('price');
             $table->string('nego');
-            $table->string('photos');
+            // $table->string('photos');
             $table->string('pos_number');
-            $table->number('user_id');
-
+            $table->integer('user_id');
         });
     }
 
