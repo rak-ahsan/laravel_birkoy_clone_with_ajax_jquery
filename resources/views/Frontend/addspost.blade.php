@@ -186,4 +186,4 @@
     $('#cata').select2();
 });
 </script>
-@endsection
+@endsection 
