@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catagories;
+use App\Models\image;
 use App\Models\location;
 use App\Models\postads;
 use Illuminate\Http\Request;
@@ -44,17 +45,32 @@ class AlladsController extends Controller
             'model' => 'required',
             'desc' => 'required',
             'price' => 'required',
-            'nego' => 'required',
             'pos_number' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($validator->passes()) {
-            postads::create($request->post());
-            return redirect()->route('adspost');
-        } else {
+        if ($validator->fails()) {
             return redirect()->route('adspost')->withErrors($validator)->withInput();
         }
+
+        $postads = postads::create($request->except('images'));
+
+        if ($request->hasFile("images")) {
+            $files = $request->file("images");
+            foreach ($files as $file) {
+                $imageName = 'adspic' . time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("/img/ads"), $imageName);
+
+                image::create([
+                    'ads_id' => $postads->ads_id,
+                    'imagename' => $imageName
+                ]);
+            }
+        }
+
+        return redirect()->route('adspost');
     }
+
 
     /**
      * Display the specified resource.

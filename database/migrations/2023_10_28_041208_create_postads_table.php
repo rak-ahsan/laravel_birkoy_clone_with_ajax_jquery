@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('desc');
             $table->integer('price');
-            $table->string('nego');
-            // $table->string('photos');
+            $table->string('nego')->default('off');
             $table->string('pos_number');
             $table->integer('user_id');
             $table->timestamps();

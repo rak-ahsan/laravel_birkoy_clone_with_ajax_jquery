@@ -1,7 +1,7 @@
 @extends('Frontend.layout.Head')
 @section('content')
 <div class="container">
-    <form action="{{ route('adstore') }}" method="POST">
+    <form action="{{ route('adstore') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="formdesign mt-4 p-3" style="background-color: #fff">
@@ -134,10 +134,13 @@
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="formFile" class="form-label fw-bolder">Upload Photos</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <label for="formFile" class="form-label fw-bolder">Upload Photos </label>
+                        <input class="form-control" type="file" id="formFile" name="images[]" multiple>
                     </div>
                 </div>
+                @error('images')
+                        <p class="invalid-feedback d-block text-center" >Images Are Required and jpeg,png,jpg,gif,svg are allowed </p>
+                @enderror  
             </div>
             <hr>
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
