@@ -19,6 +19,7 @@ class HomemodelController extends Controller
 
     public function cata($username)
     {
+        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(50);
         $data['username'] = $username;
         return view('Frontend.layout.browsbycata', $data);
     }

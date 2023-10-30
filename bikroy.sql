@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2023 at 07:45 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Oct 30, 2023 at 05:59 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -96,7 +96,10 @@ INSERT INTO `images` (`img_id`, `ads_id`, `imagename`, `created_at`, `updated_at
 (1, '1', 'adspic1698639734_fitted (1).jpg', '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
 (2, '1', 'adspic1698639734_fitted (2).jpg', '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
 (3, '1', 'adspic1698639734_fitted (3).jpg', '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
-(4, '1', 'adspic1698639734_fitted.jpg', '2023-10-29 22:22:14', '2023-10-29 22:22:14');
+(4, '1', 'adspic1698639734_fitted.jpg', '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
+(5, '2', 'adspic1698682415_fitted (2).jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35'),
+(6, '2', 'adspic1698682415_fitted (1).jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35'),
+(7, '2', 'adspic1698682415_fitted.jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35');
 
 -- --------------------------------------------------------
 
@@ -211,7 +214,8 @@ CREATE TABLE `postads` (
 --
 
 INSERT INTO `postads` (`ads_id`, `ads_loc`, `ads_cata`, `condtions`, `title`, `authenticity`, `brand`, `model`, `desc`, `price`, `nego`, `pos_number`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 15, 'used', 'Tecno spark 10 pro', 'orginal', 'Tecno', 'Other model', 'Features\r\n4G, Dual SIM, USB Type-C Port, Fast Charging, Android, 8 GB RAM, Dual Camera, Bluetooth, Wifi, GPS, Fingerprint Sensor\r\n\r\nDescription\r\nTecho spark 10 pro\r\nRam-8 gb\r\nRom-128gb\r\nFull fresh \r\n1 month hoisa kinse cash memo aca \r\nSathe box charger ace\r\n\r\nআমি ফোনটি ৬ মাস হয়ছে ক্রয় করছি,,১৮০০০ টাকা দিয়া,,,,টাকার খুব দরকার তাই ফোনটি বিক্রি করে দেবো,,,', 15000, 'on', '01930412318', 7, '2023-10-29 22:22:14', '2023-10-29 22:22:14');
+(1, 1, 15, 'used', 'Tecno spark 10 pro', 'orginal', 'Tecno', 'Other model', 'Features\n4G, Dual SIM, USB Type-C Port, Fast Charging, Android, 8 GB RAM, Dual Camera, Bluetooth, Wifi, GPS, Fingerprint Sensor\n\nDescription\nTecho spark 10 pro\nRam-8 gb\nRom-128gb\nFull fresh \n1 month hoisa kinse cash memo aca \nSathe box charger ace\n\nআমি ফোনটি ৬ মাস হয়ছে ক্রয় করছি,,১৮০০০ টাকা দিয়া,,,,টাকার খুব দরকার তাই ফোনটি বিক্রি করে দেবো,,,', 15000, 'on', '01930412318', 7, '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
+(2, 2, 14, 'used', 'Netis 2409e', 'orginal', 'Netis', 'Other Model', '1mas use all ok \r\n\r\nDekhe check kore niben \r\n\r\nনিতে চাইলে বানেশ্ব বাজারে আসতে হবে\r\nনিতে চাইলে বানেশ্ব বাজারে আসতে হবে', 16000, 'off', '01926249550', 8, '2023-10-30 10:13:35', '2023-10-30 10:13:35');
 
 -- --------------------------------------------------------
 
@@ -239,7 +243,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `number`, `user_img`, `location`, `username`) VALUES
-(7, 'Rakib Ahsan', 'cloudysky121@gmail.com', NULL, '$2y$10$EfL4pxLGa6ndSgw9.Z.ZtuXPOajlJdXgwxylKgs9DV2h2LIHURKqO', NULL, '2023-10-29 23:43:37', '2023-10-29 23:43:37', '01775566772', '1698644617.webp', 1, 'rakib');
+(7, 'Rakib Ahsan', 'cloudysky121@gmail.com', NULL, '$2y$10$EfL4pxLGa6ndSgw9.Z.ZtuXPOajlJdXgwxylKgs9DV2h2LIHURKqO', NULL, '2023-10-29 23:43:37', '2023-10-29 23:43:37', '01775566772', '1698644617.webp', 1, 'rakib'),
+(8, 'Pial Rahman', 'pial@gmail.com', NULL, '$2y$10$i65Wr2DTmO7DuBXpIxZkZ..X6FdgR6T5IdalieDBG9VqdwcW/VJEm', NULL, '2023-10-30 10:11:24', '2023-10-30 10:11:24', '01785248796', '1698682284.webp', 2, 'pial');
 
 --
 -- Indexes for dumped tables
@@ -324,7 +329,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `img_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `img_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -348,13 +353,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `postads`
 --
 ALTER TABLE `postads`
-  MODIFY `ads_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ads_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

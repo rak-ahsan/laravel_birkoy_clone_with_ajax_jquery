@@ -4,7 +4,7 @@
     <div class="row mt-3">
         <div class="porduct_title col-md-6 mt-3">
             <h1 class="fw-bolder fs-3">{{$singelproduct->title}}</h1>
-            <span>Posted on 21 Oct 10:25 am, Jatrabari, Dhaka</span>
+            <span>Posted on {{$singelproduct->created_at}}, {{$singelproduct->loc_name}}</span>
         </div>
         <div class="porduct_title col-md-6 text-end mt-3">
             <div class="dropdown">
@@ -24,23 +24,17 @@
         <div class="col-md-8 scrollbar-auto">
             <div class="col-12 mb-1">
                 <div class="lightbox">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp" alt="Gallery image 1" class="ecommerce-gallery-main-img active w-100" id="fullimg" />
+                    <img src="{{ asset('img/ads/'.$img[0]->imagename) }}" alt="Gallery image 1" class="ecommerce-gallery-main-img active w-100" id="fullimg"  style="height: 800px"/>
                 </div>
             </div>
-            <div class=" d-flex img-galary">
+            <div class="d-flex">
+                @foreach($img as $row)
                 <div class="col-3 mt-1" style="padding-right:5px">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp" data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp" alt="Gallery image 1" class="active w-100" onclick="imgchnage(this)" />
+                    <img src="{{ asset('img/ads/'.$row->imagename) }}" style="height: 200px"  alt="Gallery image" class="active w-100" onclick="imgchnage(this)" />
                 </div>
-                <div class="col-3 mt-1" style="padding-right:5px">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp" data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp" alt="Gallery image 2" class="w-100" onclick="imgchnage(this)" />
-                </div>
-                <div class="col-3 mt-1" style="padding-right:5px">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp" data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp" alt="Gallery image 3" class="w-100" onclick="imgchnage(this)" />
-                </div>
-                <div class="col-3 mt-1" style="padding-right:5px">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/15a.webp" data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/15a.webp" alt="Gallery image 4" class="w-100" onclick="imgchnage(this)" />
-                </div>
+                @endforeach
             </div>
+            
             <div class="row ">
                 <div class="price-part justify-content-start align-items-center d-flex mt-3">
                     <span class="text-p">{{$singelproduct->price}}</span>
@@ -66,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="features">
+                <div class="features mt-3">
                     <p>{{$singelproduct->desc}}</p>
                 </div>
             </div>

@@ -18,9 +18,14 @@ class AlladsController extends Controller
     {
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(30);
         $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
-            ->select('postads.*', 'locations.loc_name')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->orderBy('ads_id', 'DESC')
             ->paginate(10);
+
+        foreach ($data['ads'] as $ad) {
+            $data['img'][$ad->ads_id] = image::where('ads_id', $ad->ads_id)->first();
+        }
         return view('Frontend.allads', $data);
     }
 

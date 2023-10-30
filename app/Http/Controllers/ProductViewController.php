@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\image;
 use App\Models\postads;
 use App\Models\ProductView;
 use Illuminate\Http\Request;
@@ -13,10 +14,20 @@ class ProductViewController extends Controller
      */
     public function index($post)
     {
+        $data['img'] = image::where('ads_id', $post)->get();
+
         $data['singelproduct'] = postads::join('users', 'users.id', '=', 'postads.user_id')
-        ->select('postads.*', 'users.name','users.email','users.number','users.username')
-        ->find($post);
-        return view('Frontend.productview',$data);
+            ->join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->select(
+                'postads.*',
+                'locations.loc_name',
+                'users.name',
+                'users.email',
+                'users.number',
+                'users.username'
+            )
+            ->find($post);
+        return view('Frontend.productview', $data);
     }
 
     /**
