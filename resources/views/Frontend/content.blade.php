@@ -28,15 +28,14 @@
         @foreach ($cata as $row)
 
         <div class="col-md-3 col-sm-6  d-flex justify-content-center align-items-center mb-5">
-            <div class="part1">
+            <div class="part1 col-md-3">
                 <i class="{{ $row->cata_icon }}" style="color: #117463; font-size:40px"></i>
             </div>
-            <div class="t1 px-3">
+            <div class="t1 px-3 col-md-9">
                 <a href=" {{ route('username',$row->cata_username) }}" class="nav-link">
                     {{$row->cata_name}} <br>
                     108,245 ads
                 </a>
-
             </div>
         </div>
 
@@ -150,7 +149,6 @@
 
     <div class="container">
         <div class="row">
-
             <div class="part1 col-md-6 d-flex shadow mt-5 p-3">
                 <div class="col-md-4 ">
                     <img src="{{ 'img/bagmoney.png' }}" style="height: 150px; width:auto;">

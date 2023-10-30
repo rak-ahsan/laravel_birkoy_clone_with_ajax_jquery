@@ -17,6 +17,10 @@ class AlladsController extends Controller
     public function index()
     {
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(30);
+        $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->select('postads.*', 'locations.loc_name')
+            ->orderBy('ads_id', 'DESC')
+            ->paginate(10);
         return view('Frontend.allads', $data);
     }
 

@@ -24,7 +24,7 @@
                         <select class="form-select form-select-sm text-start" aria-label="Small select example"  name='ads_cata' id="cata">
                             <option value="">Please Select Catagories</option>
                             @foreach ($catagory as $row)
-                            <option value="{{$row->cata_id}}" {{ old('ads_cata') == $row->cata_id ? 'selected' : '' }}>{{$row->cata_name}}</option>
+                            <option value="{{$row->cata_id}}" {{ old('ads_cata') == $row->cata_id ? 'selected' : '' }} >{{$row->cata_name}}</option>
                             @endforeach
                         </select>
                         @error('ads_cata')

@@ -3,7 +3,7 @@
 <div class="container" style="background-color: #fff;">
     <div class="row mt-3">
         <div class="porduct_title col-md-6 mt-3">
-            <h1 class="fw-bolder fs-3">Maximus R1 Pro (Used)</h1>
+            <h1 class="fw-bolder fs-3">{{$singelproduct->title}}</h1>
             <span>Posted on 21 Oct 10:25 am, Jatrabari, Dhaka</span>
         </div>
         <div class="porduct_title col-md-6 text-end mt-3">
@@ -43,7 +43,7 @@
             </div>
             <div class="row ">
                 <div class="price-part justify-content-start align-items-center d-flex mt-3">
-                    <span class="text-p"  >Tk 15,000</span>
+                    <span class="text-p">{{$singelproduct->price}}</span>
                     <span class="px-3">Negotiable</span>
                     <div class="like">
                         <a href="#" class="nav-link" onclick="dlike(event)">
@@ -57,39 +57,33 @@
 
                 <div class="model d-flex justify-content-between">
                     <div class="model1">
-                        <span>Condition:</span><br>
-                        <span>Model:</span>
+                        <span>Condition: {{$singelproduct->condtions}}</span><br>
+                        <span>Model: {{$singelproduct->model}}</span>
                     </div>
                     <div class="model2">
-                        <span>Brand:</span><br>
-                        <span>Authenticity:</span>
+                        <span>Brand: {{$singelproduct->brand}}</span><br>
+                        <span>Authenticity: {{$singelproduct->authenticity}}</span>
                     </div>
                 </div>
 
                 <div class="features">
-                    <b style="font-size:17px">Features</b><br>
-                    <p>4G, 5G, Dual SIM, Micro SIM, Mini SIM, USB Type-C Port, Fast Charging, Flash Charging, Android, iOS, Expandable Memory, 8 GB RAM, Dual Camera, Triple Camera, Dual LED Flash, Quad LED Flash, Bluetooth, Wifi, GPS, Fingerprint Sensor, Infrared port </p>
-                </div>
-
-                <div class="features">
-                    <b style="font-size:17px">Description</b><br>
-                    <p>দুবাই থেকে আনা হয়েছে একেবারে নতুনের মতো সাথে চার্জার আছে বক্স আনা হয় নাই..সিকিউরিটি হিসাবে যা চান দেয়া হবে...</p>
+                    <p>{{$singelproduct->desc}}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">For sale by <b>Rine Aktar</b></li>
+                    <li class="list-group-item">For sale by <b>{{$singelproduct->name}}</b></li>
                     <li onclick="number()" class="list-group-item">
                         <i class="fa-solid fa-phone" style="background-color: #0b9a09; padding:5px; border-radius:20px;color:#fff"></i> <span id="cngnumber"> Call :0177xxxxxx <br>
                             <span class="px-4">please click to see Number</span>
-                            <span id="rakib" class="d-none">15</span>
+                            <span id="rakib" class="d-none">{{$singelproduct->number}}</span>
                         </span>
                     </li>
                     <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><a class="nav-link active" aria-current="page" href="#"> <i class="fa-solid fa-comments fa-xl " style="color: #0b9a09; padding:5px" ></i>Chats</a>
                     </li>
-                    <li class="list-group-item"><a class="nav-link active" aria-current="page" href="{{ route('userprofile') }}"> <i class="fa-solid fa-user fa-xl" style="color: #0b9a09; padding:5px"></i>User Profile</a>
+                    <li class="list-group-item"><a class="nav-link active" aria-current="page" > <i class="fa-solid fa-user fa-xl" style="color: #0b9a09; padding:5px"></i>User Profile</a>
                     </li>
                 </ul>
             </div>

@@ -1,5 +1,7 @@
 @extends('Frontend.layout.Head')
 @section('content')
+
+
 <div class="container shadow" style="background-color: #FFFFFF">
   <div class="row mt-5 border-bottom ">
     <div class="part1 justify-content-center align-items-center d-flex mt-4 row">
@@ -25,7 +27,7 @@
     <div class="col-md-4" style="border-right: 1px solid rgb(200, 200, 200)">
       <ul class="list-group list-group-flush">
         @foreach ($catagory as $list)
-        <li class="list-group-item"><a href="{{ route('username',$list->cata_username) }}" class="nav-link">{{$list->cata_name}} </a></li>
+        <li class="list-group-item"><a href="{{ route('username',$list->cata_username) }}" class="nav-link"><i class="{{ $list->cata_icon }}" style="margin-right:10px;"></i> {{$list->cata_name}} </a></li>
         @endforeach
       </ul>
       {{ $catagory->links()}}
@@ -34,7 +36,15 @@
       <p><b>Buy, Sell, Rent or Find Anything in Bangladesh</b></p>
       @include('Frontend/layout/carosol')
       <div class="post">
-        <a href="{{'productview'}}" class="nav-link">
+        @foreach($ads as $list)
+
+        <?php
+            $givenDateTime = strtotime($list->created_at);
+            $currentDateTime = time();
+            $differenceInMinutes = round(($currentDateTime - $givenDateTime) / 60);
+        ?>
+
+<a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link">
           <div class="card my-3">
             <div class="row g-0 p-3">
               <div class="col-md-4">
@@ -43,50 +53,21 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">
-                    Emergency PC sell post</h5>
-                  <p class="card-text"> Kushtia, Khulna Division</p>
-                  <p class="card-text"><small class="text-body-secondary">2500</small></p>
+                    {{$list->title}}</h5>
+                  <p class="card-text"> {{$list->loc_name}}</p>
+                  <p class="card-text"><span style="color: #149777; font-size:20px ">Tk {{$list->price}}</span></p>
                 </div>
-                <p class="text-end px-4">10 ministes ago</p>
+                <p class="text-end px-4">{{$differenceInMinutes}} minites ago</p>
               </div>
             </div>
           </div>
         </a>
-        <div class="card my-3">
-          <div class="row g-0 p-3">
-            <div class="col-md-4">
-              <img src="{{'img/laptop.jpg'}}" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">
-                  Emergency PC sell post</h5>
-                <p class="card-text"> Kushtia, Khulna Division</p>
-                <p class="card-text"><small class="text-body-secondary">2500</small></p>
-              </div>
-              <p class="text-end px-4">10 ministes ago</p>
-            </div>
-          </div>
-        </div>
-        <div class="card my-3">
-          <div class="row g-0 p-3">
-            <div class="col-md-4">
-              <img src="{{'img/laptop.jpg'}}" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">
-                  Emergency PC sell post</h5>
-                <p class="card-text"> Kushtia, Khulna Division</p>
-                <p class="card-text"><small class="text-body-secondary">2500</small></p>
-              </div>
-              <p class="text-end px-4">10 ministes ago</p>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
-
+    <div class="mt-3">
+            {{ $ads->links() }}
+    </div>
   </div>
 </div>
 @include('Frontend/layout/footer');

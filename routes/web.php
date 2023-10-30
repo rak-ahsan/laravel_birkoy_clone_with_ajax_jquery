@@ -59,12 +59,12 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
 
 Route::controller(ProductViewController::class)->group(function () {
 
-    Route::get('/productview', 'index')->name('productview');
+    Route::get('/productview/{post}', 'index')->name('productview');
 });
 
 Route::controller(UserProfileController::class)->group(function () {
 
-    Route::get('/userprofile', 'index')->name('userprofile');
+    Route::get('/userprofile/{username}', 'index')->name('userprofile');
 });
 
 Route::controller(ChatModelController::class)->group(function () {

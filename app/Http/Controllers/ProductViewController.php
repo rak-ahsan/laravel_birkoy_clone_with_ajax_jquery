@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\postads;
 use App\Models\ProductView;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,12 @@ class ProductViewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($post)
     {
-        return view('Frontend.productview');
+        $data['singelproduct'] = postads::join('users', 'users.id', '=', 'postads.user_id')
+        ->select('postads.*', 'users.name','users.email','users.number','users.username')
+        ->find($post);
+        return view('Frontend.productview',$data);
     }
 
     /**

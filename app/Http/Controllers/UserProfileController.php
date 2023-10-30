@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,10 @@ class UserProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($username)
     {
-        return view('Frontend.userprofile');
+        $data['user'] = User::find($username)->get();
+        return view('Frontend.userprofile',$data);
     }
 
     /**
