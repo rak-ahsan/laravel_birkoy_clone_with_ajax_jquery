@@ -13,8 +13,9 @@ class UserProfileController extends Controller
      */
     public function index($username)
     {
-        $data['user'] = User::find($username)->get();
+        $data['user'] = User::where('username', $username)->first();
         return view('Frontend.userprofile',$data);
+
     }
 
     /**

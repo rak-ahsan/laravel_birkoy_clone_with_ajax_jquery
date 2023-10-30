@@ -16,7 +16,7 @@
         </div>
         <div class="card mt-4" style="width: 18rem;">
             <div class="card-body">
-                <h4 class="card-title"><b>Rakib Ahsan</b></h4>
+                <h4 class="card-title"><b></b></h4>
                 <div class="card-subtitle mb-2 text-body-secondary">
                     <img src=" {{ asset ('img/memberbadge.png') }}" alt="" srcset="" class="img-fluid"
                         style="width:80px">
@@ -27,9 +27,9 @@
             </div>
         </div> --}}
         <div class="card mt-3 mb-5 justify-content-center" style="width: 18rem;">
-            <img src="{{ asset('img/dp.jpg') }}" alt="" srcset="" class="img-fluid" style="border-radius: 5px">
+        <img src="{{ asset('img/user/' . $user->user_img) }}" alt="" srcset="" class="img-fluid" style="border-radius: 5px">
             <div class="card-body">
-                <h4 class="card-title"><b>Rakib Ahsan</b></h4>
+                <h4 class="card-title"><b>{{$user->name}}</b></h4>
                 <div class="card-subtitle mb-2 text-body-secondary">
                     <img src=" {{ asset ('img/memberbadge.png') }}" alt="" srcset="" class="img-fluid"
                         style="width:80px">
@@ -38,9 +38,9 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Member Since : Jan 2023</li>
-                <li class="list-group-item">Phone Number : 01775566772</li>
-                <li class="list-group-item">Email Address : Demo@gmail.com</li>
-                <li class="list-group-item">Location: Dhaka</li>
+                <li class="list-group-item">Phone Number : {{$user->number}}</li>
+                <li class="list-group-item">Email Address : {{$user->email}}</li>
+                <li class="list-group-item">Location: {{$user->location}}</li>
             </ul>
         </div>
     </div>
