@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2023 at 05:59 PM
+-- Generation Time: Oct 31, 2023 at 06:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -99,7 +99,19 @@ INSERT INTO `images` (`img_id`, `ads_id`, `imagename`, `created_at`, `updated_at
 (4, '1', 'adspic1698639734_fitted.jpg', '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
 (5, '2', 'adspic1698682415_fitted (2).jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35'),
 (6, '2', 'adspic1698682415_fitted (1).jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35'),
-(7, '2', 'adspic1698682415_fitted.jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35');
+(7, '2', 'adspic1698682415_fitted.jpg', '2023-10-30 10:13:35', '2023-10-30 10:13:35'),
+(8, '3', 'adspic1698743586_Screenshot 2023-10-18 214627.png', '2023-10-31 03:13:06', '2023-10-31 03:13:06'),
+(9, '3', 'adspic1698743586_Screenshot 2023-10-19 202850.png', '2023-10-31 03:13:06', '2023-10-31 03:13:06'),
+(10, '3', 'adspic1698743586_Screenshot 2023-10-19 202924.png', '2023-10-31 03:13:06', '2023-10-31 03:13:06'),
+(11, '3', 'adspic1698743586_Screenshot 2023-10-19 202933.png', '2023-10-31 03:13:06', '2023-10-31 03:13:06'),
+(12, '4', 'adspic1698745390_favicon (1).ico', '2023-10-31 03:43:10', '2023-10-31 03:43:10'),
+(13, '5', 'adspic1698745752_pxfuel (1).jpg', '2023-10-31 03:49:12', '2023-10-31 03:49:12'),
+(14, '6', 'adspic1698745991_fitted (3).jpg', '2023-10-31 03:53:11', '2023-10-31 03:53:11'),
+(15, '6', 'adspic1698745991_fitted (2).jpg', '2023-10-31 03:53:11', '2023-10-31 03:53:11'),
+(16, '7', 'adspic1698747779_fitted (6).jpg', '2023-10-31 04:22:59', '2023-10-31 04:22:59'),
+(17, '7', 'adspic1698747779_fitted (5).jpg', '2023-10-31 04:22:59', '2023-10-31 04:22:59'),
+(18, '7', 'adspic1698747779_fitted (4).jpg', '2023-10-31 04:22:59', '2023-10-31 04:22:59'),
+(19, '8', 'adspic1698749831_fitted (2).jpg', '2023-10-31 04:57:11', '2023-10-31 04:57:11');
 
 -- --------------------------------------------------------
 
@@ -152,7 +164,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2023_10_25_043109_create_locations_table', 2),
 (6, '2023_10_26_034345_create_catagories_table', 3),
 (7, '2023_10_28_041208_create_postads_table', 4),
-(8, '2023_10_29_171340_create_images_table', 4);
+(8, '2023_10_29_171340_create_images_table', 4),
+(9, '2023_10_31_104618_create_statuses_table', 5);
 
 -- --------------------------------------------------------
 
@@ -204,18 +217,44 @@ CREATE TABLE `postads` (
   `price` int(11) NOT NULL,
   `nego` varchar(255) NOT NULL DEFAULT 'off',
   `pos_number` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_name` varchar(55) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `mainphoto` varchar(55) DEFAULT NULL,
+  `ads_status` int(11) NOT NULL DEFAULT 3
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `postads`
 --
 
-INSERT INTO `postads` (`ads_id`, `ads_loc`, `ads_cata`, `condtions`, `title`, `authenticity`, `brand`, `model`, `desc`, `price`, `nego`, `pos_number`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 15, 'used', 'Tecno spark 10 pro', 'orginal', 'Tecno', 'Other model', 'Features\n4G, Dual SIM, USB Type-C Port, Fast Charging, Android, 8 GB RAM, Dual Camera, Bluetooth, Wifi, GPS, Fingerprint Sensor\n\nDescription\nTecho spark 10 pro\nRam-8 gb\nRom-128gb\nFull fresh \n1 month hoisa kinse cash memo aca \nSathe box charger ace\n\nআমি ফোনটি ৬ মাস হয়ছে ক্রয় করছি,,১৮০০০ টাকা দিয়া,,,,টাকার খুব দরকার তাই ফোনটি বিক্রি করে দেবো,,,', 15000, 'on', '01930412318', 7, '2023-10-29 22:22:14', '2023-10-29 22:22:14'),
-(2, 2, 14, 'used', 'Netis 2409e', 'orginal', 'Netis', 'Other Model', '1mas use all ok \r\n\r\nDekhe check kore niben \r\n\r\nনিতে চাইলে বানেশ্ব বাজারে আসতে হবে\r\nনিতে চাইলে বানেশ্ব বাজারে আসতে হবে', 16000, 'off', '01926249550', 8, '2023-10-30 10:13:35', '2023-10-30 10:13:35');
+INSERT INTO `postads` (`ads_id`, `ads_loc`, `ads_cata`, `condtions`, `title`, `authenticity`, `brand`, `model`, `desc`, `price`, `nego`, `pos_number`, `user_name`, `created_at`, `updated_at`, `mainphoto`, `ads_status`) VALUES
+(4, 8, 16, 'used', 'user_name', 'orginal', 'Other brand', 'Cng Exchange Lpg conversion', 'user_name', 5, 'off', '0144', 'rakib', '2023-10-31 03:43:10', '2023-10-31 03:43:10', '1698745390.jpg', 3),
+(5, 8, 16, 'used', 'pial@gmail.com', 'orginal', 'Other brand', 'Cng Exchange Lpg conversion', 'pial@gmail.com', 14000, 'off', '7887', 'pial', '2023-10-31 03:49:12', '2023-10-31 03:49:12', '1698745752.jpg', 3),
+(6, 6, 15, 'used', 'Samsung Galaxy A11 . (Used)', 'orginal', 'Samsung', 'Galaxy A11', 'Features\r\n4G, 4 GB RAM\r\n\r\nDescription\r\nSAMSUNG galaxy A11 .\r\n\r\n4000mh battery. \r\n\r\nbox charge nai shudu phone asy\r\n\r\nDisplay ty iktu prblm but all okay \r\n\r\n4/32 gb \r\n\r\nlocation Savar', 5000, 'on', '01305406643', 'pial', '2023-10-31 03:53:11', '2023-10-31 03:53:11', '1698745991.jpg', 4),
+(7, 6, 14, 'used', 'Smart Watch', 'orginal', 'Other brand', 'k25', 'ইন্ডিয়া থেকে আনা হয়েছে দুর্গাপূজার আগের দিন। \r\n\r\nএখনো ব্যবহার করা হয়নি \r\n\r\nসম্পূর্ণ নতুন স্মার্ট ওয়াচ। \r\n\r\nস্মার্ট ঘড়ি র সাথে যা যা ছিল তাই পাবেন। \r\n\r\nআমার একটা আছে এজন্য লাগবে না তাই বিক্রি করে দিচ্ছি। \r\n\r\nঅযথা কেউ উল্টাপাল্টা দাম বলে লজ্জিত হবেন  না।  সত্যিই নেয়ার ইচ্ছা থাকলে সরাসরি ফোন দিবেন।', 3200, 'off', '01775566884', 'rakib', '2023-10-31 04:22:59', '2023-10-31 04:22:59', '1698747779.jpg', 4),
+(8, 5, 13, 'used', 'rakib t', 'orginal', 'text', 'text', 'text', 5, 'off', '01557', 'rakib', '2023-10-31 04:57:11', '2023-10-31 09:25:20', '1698749831.jpg', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `statuses`
+--
+
+CREATE TABLE `statuses` (
+  `status_id` bigint(20) UNSIGNED NOT NULL,
+  `status_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`status_id`, `status_name`) VALUES
+(1, 'Available'),
+(2, 'Sold Out'),
+(3, 'Pending '),
+(4, 'Active');
 
 -- --------------------------------------------------------
 
@@ -235,16 +274,17 @@ CREATE TABLE `users` (
   `number` varchar(50) NOT NULL,
   `user_img` varchar(50) DEFAULT NULL,
   `location` int(50) NOT NULL,
-  `username` varchar(50) DEFAULT NULL
+  `username` varchar(50) DEFAULT NULL,
+  `membership` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `number`, `user_img`, `location`, `username`) VALUES
-(7, 'Rakib Ahsan', 'cloudysky121@gmail.com', NULL, '$2y$10$EfL4pxLGa6ndSgw9.Z.ZtuXPOajlJdXgwxylKgs9DV2h2LIHURKqO', NULL, '2023-10-29 23:43:37', '2023-10-29 23:43:37', '01775566772', '1698644617.webp', 1, 'rakib'),
-(8, 'Pial Rahman', 'pial@gmail.com', NULL, '$2y$10$i65Wr2DTmO7DuBXpIxZkZ..X6FdgR6T5IdalieDBG9VqdwcW/VJEm', NULL, '2023-10-30 10:11:24', '2023-10-30 10:11:24', '01785248796', '1698682284.webp', 2, 'pial');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `number`, `user_img`, `location`, `username`, `membership`) VALUES
+(7, 'Rakib Ahsan', 'cloudysky121@gmail.com', NULL, '$2y$10$EfL4pxLGa6ndSgw9.Z.ZtuXPOajlJdXgwxylKgs9DV2h2LIHURKqO', NULL, '2023-10-29 23:43:37', '2023-10-29 23:43:37', '01775566772', '1698644617.webp', 1, 'rakib', 1),
+(8, 'Pial Rahman', 'pial@gmail.com', NULL, '$2y$10$i65Wr2DTmO7DuBXpIxZkZ..X6FdgR6T5IdalieDBG9VqdwcW/VJEm', NULL, '2023-10-30 10:11:24', '2023-10-30 10:11:24', '01785248796', '1698682284.webp', 2, 'pial', 1);
 
 --
 -- Indexes for dumped tables
@@ -302,6 +342,12 @@ ALTER TABLE `postads`
   ADD PRIMARY KEY (`ads_id`);
 
 --
+-- Indexes for table `statuses`
+--
+ALTER TABLE `statuses`
+  ADD PRIMARY KEY (`status_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -329,7 +375,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `img_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `img_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -341,7 +387,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -353,7 +399,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `postads`
 --
 ALTER TABLE `postads`
-  MODIFY `ads_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ads_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `statuses`
+--
+ALTER TABLE `statuses`
+  MODIFY `status_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

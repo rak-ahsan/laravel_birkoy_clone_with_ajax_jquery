@@ -31,25 +31,25 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Payment</label>
+                            <label for="paymentMethod" class="col-sm-2 col-form-label">Payment</label>
                             <div class="my-3 col-sm-10">
                                 <div class="form-check">
-                                  <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                                  <label class="form-check-label" for="credit">Credit card</label>
+                                    <input id="credit" name="paymentMethod" type="radio" value="Credit card" class="form-check-input" checked required>
+                                    <label class="form-check-label" for="credit">Credit card</label>
                                 </div>
                                 <div class="form-check">
-                                  <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                                  <label class="form-check-label" for="debit">Debit card</label>
+                                    <input id="debit" name="paymentMethod" type="radio" value="Debit card" class="form-check-input" required>
+                                    <label class="form-check-label" for="debit">Debit card</label>
                                 </div>
                                 <div class="form-check">
-                                  <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                  <label class="form-check-label" for="paypal">PayPal</label>
+                                    <input id="paypal" name="paymentMethod" type="radio" value="PayPal" class="form-check-input" required>
+                                    <label class="form-check-label" for="paypal">PayPal</label>
                                 </div>
                                 <div class="form-check">
-                                    <input id="Bkash" name="paymentMethod" type="radio" class="form-check-input" required>
+                                    <input id="Bkash" name="paymentMethod" type="radio" value="Bkash" class="form-check-input" required>
                                     <label class="form-check-label" for="Bkash">Bkash</label>
-                                  </div>
-                              </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
