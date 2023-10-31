@@ -23,9 +23,6 @@ class AlladsController extends Controller
             ->orderBy('ads_id', 'DESC')
             ->paginate(10);
 
-        foreach ($data['ads'] as $ad) {
-            $data['img'][$ad->ads_id] = image::where('ads_id', $ad->ads_id)->first();
-        }
         return view('Frontend.allads', $data);
     }
 
