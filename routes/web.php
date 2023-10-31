@@ -60,6 +60,8 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     // for backend
 
     Route::get('/badsview', 'alladsview')->name('badsview');
+    Route::get('/pendingads', 'pendingads')->name('pendingads');
+    Route::get('/editads/{ads_id}', 'adsedit')->name('editads');
 });
 
 
@@ -73,6 +75,10 @@ Route::controller(ProductViewController::class)->group(function () {
 Route::controller(UserProfileController::class)->group(function () {
 
     Route::get('/userprofile/{username}', 'index')->name('userprofile');
+
+    // backend
+
+    Route::get('/alluser', 'alluser')->name('alluser');
 });
 
 Route::controller(ChatModelController::class)->group(function () {

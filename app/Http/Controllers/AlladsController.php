@@ -126,6 +126,30 @@ class AlladsController extends Controller
 
     public function alladsview()
     {
-        return view('backend.ads.viewallads');
+        $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->orderBy('ads_id', 'DESC')
+            ->paginate(10);
+
+        return view('backend.ads.viewallads', $data);
+    }
+
+    public function pendingads()
+    {
+        $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->where('ads_status', 3)
+            ->orderBy('ads_id', 'DESC')
+            ->paginate(10);
+
+        return view('backend.ads.pendingads', $data);
+    }
+
+    public function adsedit($ads_id)
+    {
+        $data['ads'] = postads::find($ads_id);
+        return view('backend.ads.adsupdate', $data);
     }
 }

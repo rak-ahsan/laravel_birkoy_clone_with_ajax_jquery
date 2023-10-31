@@ -201,29 +201,38 @@
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ route('category.create')}}">Add</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route ('category.index')}}">View</a></li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basics" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Brands</span>
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-ads" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Ads</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
-              <div class="collapse" id="ui-basics">
+              <div class="collapse" id="ui-ads">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ route('category.create')}}">Add</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{route ('category.index')}}">View</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('badsview')}}">All Ads</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('pendingads')}}">pending Ads</a></li>
                 </ul>
               </div>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.html">
-                <span class="menu-title">Icons</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Members</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
+              <div class="collapse" id="ui-user">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('alluser')}}">All Members</a></li>
+                  <li class="nav-item"> <a class="nav-link" >Paid Members</a></li>
+                  <li class="nav-item"> <a class="nav-link" >Free Members</a></li>
+                  <li class="nav-item"> <a class="nav-link" >Membership Request</a></li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../pages/forms/basic_elements.html">

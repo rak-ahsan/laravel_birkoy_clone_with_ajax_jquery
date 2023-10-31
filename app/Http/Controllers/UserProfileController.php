@@ -70,4 +70,11 @@ class UserProfileController extends Controller
     {
         //
     }
+
+    // backend
+    public function alluser()
+    {
+        $data['user'] = User::orderBy('id', 'DESC')->get();
+        return view('backend.user.alluser', $data);
+    }
 }
