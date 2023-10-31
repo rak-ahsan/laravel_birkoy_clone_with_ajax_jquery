@@ -19,6 +19,7 @@ class UserProfileController extends Controller
 
         $data['ads'] = postads::where('user_name', $username)
             ->orderBy('ads_id', 'desc')
+            ->where('ads_status', 4)
             ->get();
         return view('Frontend.userprofile', $data);
     }
@@ -76,5 +77,21 @@ class UserProfileController extends Controller
     {
         $data['user'] = User::orderBy('id', 'DESC')->get();
         return view('backend.user.alluser', $data);
+    }
+
+    public function freemember()
+    {
+        $data['user'] = User::orderBy('id', 'DESC')
+            ->where('membership', 1)
+            ->get();
+        return view('backend.user.freeuser', $data);
+    }
+
+    public function paidmember()
+    {
+        $data['user'] = User::orderBy('id', 'DESC')
+            ->where('membership', 2)
+            ->get();
+        return view('backend.user.paidmember', $data);
     }
 }

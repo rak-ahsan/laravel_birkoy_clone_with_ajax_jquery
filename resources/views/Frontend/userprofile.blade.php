@@ -1,5 +1,6 @@
 @extends('Frontend.layout.Head')
 @section('content')
+@include('backend.user.membership')
 <div class="container shadow mt-5" style="background-color: #FFFFFF">
     <div class="row">
         <div class="col-md-4" style="border-right: 1px solid rgb(200, 200, 200)">
@@ -9,8 +10,13 @@
                 <div class="card-body">
                     <h4 class="card-title"><b>{{$user->name}}</b></h4>
                     <div class="card-subtitle mb-2 text-body-secondary">
+                        @if ($user->membership == 2)
                         <img src=" {{ asset ('img/memberbadge.png') }}" alt="" srcset="" class="img-fluid"
                             style="width:80px">
+                        @else
+                        <img src=" {{ asset ('img/freemember.png') }}" alt="" srcset="" class="img-fluid"
+                            style="width:80px">
+                        @endif
                         <span><b>80% Positive Rating</b></span>
                     </div>
                 </div>
@@ -19,12 +25,25 @@
                     <li class="list-group-item">Phone Number : {{$user->number}}</li>
                     <li class="list-group-item">Email Address : {{$user->email}}</li>
                     <li class="list-group-item">Location: {{$user->location}}</li>
+                    
+                    @if (Auth::user() && Auth::user()->id == $user->id && Auth::user()->membership == 1)
+                    <li class="list-group-item text-center">
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            style="background-color: #ffc800">
+                            Buy Membership Now
+                        </button>
+                    </li>
+                    @endif
+
+
                 </ul>
             </div>
         </div>
         <!-- mainpart -->
         <div class="col-md-8 p-3">
-            <p><b>Adds Posted By {{$user->name}}</b></p>
+            <div class="d-flex">
+                <p><b>Adds Posted By {{$user->name}}</b></p>
+            </div>
             @foreach ($ads as $list )
             <div class="post">
                 <a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link">
@@ -33,7 +52,7 @@
                             <div class="col-md-4">
                                 <img src="{{ asset('img/ads/' . $list->mainphoto) }}" class="img-fluid rounded-start"
                                     alt="..." style="height: 200px">
-                              </div>
+                            </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">
@@ -47,11 +66,9 @@
                         </div>
                     </div>
                 </a>
-            </div> 
+            </div>
             @endforeach
-           
         </div>
-
     </div>
 </div>
 

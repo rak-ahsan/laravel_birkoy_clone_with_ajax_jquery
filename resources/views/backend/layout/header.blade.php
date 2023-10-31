@@ -228,9 +228,9 @@
               <div class="collapse" id="ui-user">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route ('alluser')}}">All Members</a></li>
-                  <li class="nav-item"> <a class="nav-link" >Paid Members</a></li>
-                  <li class="nav-item"> <a class="nav-link" >Free Members</a></li>
-                  <li class="nav-item"> <a class="nav-link" >Membership Request</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('paidmember')}}">Paid Members</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('freemember')}}">Free Members</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('alluser')}}">Membership Request</a></li>
                 </ul>
               </div>
             </li>

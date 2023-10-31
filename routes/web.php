@@ -62,6 +62,7 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     Route::get('/badsview', 'alladsview')->name('badsview');
     Route::get('/pendingads', 'pendingads')->name('pendingads');
     Route::get('/editads/{ads_id}', 'adsedit')->name('editads');
+    Route::put('/upads/{ads_id}', 'bupdate')->name('upads');
 });
 
 
@@ -79,6 +80,8 @@ Route::controller(UserProfileController::class)->group(function () {
     // backend
 
     Route::get('/alluser', 'alluser')->name('alluser');
+    Route::get('/paiduser', 'paidmember')->name('paidmember');
+    Route::get('/freeuser', 'freemember')->name('freemember');
 });
 
 Route::controller(ChatModelController::class)->group(function () {

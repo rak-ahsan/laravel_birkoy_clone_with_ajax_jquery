@@ -22,6 +22,7 @@ class AlladsController extends Controller
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->orderBy('ads_id', 'DESC')
+            ->where('ads_status', 4)
             ->paginate(10);
 
         return view('Frontend.allads', $data);
@@ -149,7 +150,29 @@ class AlladsController extends Controller
 
     public function adsedit($ads_id)
     {
+        $data['status'] = status::orderby('status_id', 'desc')->limit(2)->get();
         $data['ads'] = postads::find($ads_id);
         return view('backend.ads.adsupdate', $data);
+    }
+
+    public function bupdate(Request $request, $ads_id)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'pos_number' => 'required',
+            'ads_status' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('editads', $ads_id)->withErrors($validator)->withInput();
+        }
+
+        $uads = postads::find($ads_id);
+        $uads->fill($request->post())->save();
+
+        $postadsModel = Postads::find($ads_id);
+        $postadsModel->fill($request->all())->save();
+
+        return back();
     }
 }
