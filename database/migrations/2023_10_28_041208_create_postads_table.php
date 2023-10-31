@@ -21,10 +21,12 @@ return new class extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('desc');
+            $table->string('mainphoto');
             $table->integer('price');
+            $table->integer('ads_status');
             $table->string('nego')->default('off');
             $table->string('pos_number');
-            $table->integer('user_id');
+            $table->string('user_name');
             $table->timestamps();
         });
     }

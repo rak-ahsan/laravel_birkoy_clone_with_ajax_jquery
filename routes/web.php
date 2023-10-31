@@ -55,7 +55,15 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     Route::get('/allads', 'index')->name('ads');
     Route::get('/post-add', 'adspost')->name('adspost');
     Route::post('/poststore', 'store')->name('adstore');
+    Route::get('/adsview', 'view')->name('adsview');
+
+    // for backend
+
+    Route::get('/badsview', 'alladsview')->name('badsview');
 });
+
+
+
 
 Route::controller(ProductViewController::class)->group(function () {
 

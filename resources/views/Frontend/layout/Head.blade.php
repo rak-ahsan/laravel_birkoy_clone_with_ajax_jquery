@@ -33,7 +33,7 @@
                 
                 @if (Auth::user())
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}"><i class="fa-solid fa-user-large px-2" style="color: #ffffff;"></i> My Account</a>
+                  <a class="nav-link active" aria-current="page" href=" {{ route('userprofile',Auth::user()->username) }}"><i class="fa-solid fa-user-large px-2" style="color: #ffffff;"></i> My Account</a>
               </li>
               <form method="POST" action="{{ route('logout') }}" id="logout-form">
                 @csrf

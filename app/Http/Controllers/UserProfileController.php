@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\postads;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
@@ -13,9 +14,13 @@ class UserProfileController extends Controller
      */
     public function index($username)
     {
-        $data['user'] = User::where('username', $username)->first();
-        return view('Frontend.userprofile',$data);
+        $data['user'] = User::where('username', $username)
+            ->first();
 
+        $data['ads'] = postads::where('user_name', $username)
+            ->orderBy('ads_id', 'desc')
+            ->get();
+        return view('Frontend.userprofile', $data);
     }
 
     /**

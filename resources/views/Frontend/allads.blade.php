@@ -50,10 +50,10 @@
                 <a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link">
                     <div class="card my-3">
                         <div class="row g-0 p-3">
-                            {{-- <div class="col-md-4">
-                                <img src="{{ asset('img/ads/' . $img->imagename) }}" class="img-fluid rounded-start"
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/ads/' . $list->mainphoto) }}" class="img-fluid rounded-start"
                                     alt="..." style="height: 200px">
-                              </div> --}}
+                              </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">

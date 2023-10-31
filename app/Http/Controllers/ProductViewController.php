@@ -16,7 +16,7 @@ class ProductViewController extends Controller
     {
         $data['img'] = image::where('ads_id', $post)->get();
 
-        $data['singelproduct'] = postads::join('users', 'users.id', '=', 'postads.user_id')
+        $data['singelproduct'] = postads::join('users', 'users.username', '=', 'postads.user_name')
             ->join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
             ->select(
                 'postads.*',
