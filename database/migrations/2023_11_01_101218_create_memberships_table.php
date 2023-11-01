@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('mem_name');
             $table->string('mem_email');
             $table->string('mem_number');
+            $table->string('paymentMethod');
             $table->integer('user_id');
+            $table->timestamps();
         });
     }
 

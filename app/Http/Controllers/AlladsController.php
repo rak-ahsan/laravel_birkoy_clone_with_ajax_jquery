@@ -184,12 +184,11 @@ class AlladsController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'number' => 'required',
-            'paymentMethod' => 'required',
-
+            'mem_name' => 'required',
+            'mem_email' => 'required',
+            'mem_number' => 'required',
         ]);
+
         if ($validator->passes()) {
             Membership::create($request->post());
         }

@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Membership extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'mem_id';
+
     protected $guarded = [];
 }
