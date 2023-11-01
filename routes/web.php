@@ -66,6 +66,7 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
 
     //member request
     Route::post('/memberequest', 'memberequest')->name('memberequest');
+    Route::get('/memberdelete/{mem_id}', 'destroy')->name('memberdelete');
 });
 
 
@@ -85,6 +86,11 @@ Route::controller(UserProfileController::class)->group(function () {
     Route::get('/alluser', 'alluser')->name('alluser');
     Route::get('/paiduser', 'paidmember')->name('paidmember');
     Route::get('/freeuser', 'freemember')->name('freemember');
+    Route::get('/memberequest', 'pending')->name('memberequest');
+
+    // membership
+    Route::get('/edit/{username}', 'getuser')->name('getuser');
+    Route::put('/update/{username}', 'userupdate')->name('userupdate');
 });
 
 Route::controller(ChatModelController::class)->group(function () {

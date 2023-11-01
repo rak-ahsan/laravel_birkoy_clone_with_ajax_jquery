@@ -8,6 +8,7 @@ use App\Models\location;
 use App\Models\Membership;
 use App\Models\postads;
 use App\Models\status;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -120,14 +121,6 @@ class AlladsController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
     // for backend
 
     public function alladsview()
@@ -192,5 +185,12 @@ class AlladsController extends Controller
         if ($validator->passes()) {
             Membership::create($request->post());
         }
+    }
+
+    public function destroy($mem_id)
+    {
+        $data = Membership::where('mem_id', $mem_id);
+        $data->delete();
+        return back();
     }
 }
