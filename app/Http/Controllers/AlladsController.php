@@ -8,6 +8,7 @@ use App\Models\location;
 use App\Models\postads;
 use App\Models\status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AlladsController extends Controller
@@ -32,7 +33,10 @@ class AlladsController extends Controller
      * Show the form for creating a new resource.
      */
     public function adspost()
-    {
+
+    {  
+        $data['membership'] =Auth::user()->membership;
+        $data['adsnum'] = postads::where('user_name',Auth::user()->username)->count();
         $data['location'] = location::orderBy('loc_id', 'DESC')->get();
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
         $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();

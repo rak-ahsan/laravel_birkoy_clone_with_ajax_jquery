@@ -7,12 +7,13 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
+
 class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($username)
+    public function index($username, Request $request)
     {
         $data['user'] = User::where('username', $username)
             ->first();
@@ -21,6 +22,9 @@ class UserProfileController extends Controller
             ->orderBy('ads_id', 'desc')
             ->where('ads_status', 4)
             ->get();
+
+        $data['adsnum'] = postads::where('user_name',$username)->count();
+        session()->put('adscount',$data['adsnum']);
         return view('Frontend.userprofile', $data);
     }
 

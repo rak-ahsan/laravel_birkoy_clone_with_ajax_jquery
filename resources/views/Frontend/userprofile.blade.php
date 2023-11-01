@@ -42,7 +42,10 @@
         <!-- mainpart -->
         <div class="col-md-8 p-3">
             <div class="d-flex">
-                <p><b>Adds Posted By {{$user->name}}</b></p>
+                <p><b>Adds Posted By {{$user->name}} <br>
+                @if (Auth::user() && Auth::user()->id == $user->id && Auth::user()->membership == 1)
+                You're a freemember Your Ads Limits 10 You Can Post {{ 10 - session()->get('adscount') }} more Ads </b></p>
+                @endif
             </div>
             @foreach ($ads as $list )
             <div class="post">
