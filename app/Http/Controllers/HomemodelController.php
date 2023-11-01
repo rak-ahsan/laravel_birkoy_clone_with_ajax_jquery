@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catagories;
 use App\Models\Homemodel;
+use App\Models\postads;
 use Illuminate\Http\Request;
 
 class HomemodelController extends Controller
@@ -17,10 +18,13 @@ class HomemodelController extends Controller
         return view('Frontend.content', $data);
     }
 
-    public function cata($username)
+    public function cata($cata_id)
     {
-        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(50);
-        $data['username'] = $username;
+        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(30);
+        $data['ads'] = postads::orderBy('ads_id', 'DESC')
+            ->where('ads_cata', $cata_id)
+            ->paginate(50);
+
         return view('Frontend.layout.browsbycata', $data);
     }
 

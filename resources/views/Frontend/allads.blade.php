@@ -33,7 +33,7 @@
         <div class="col-md-4" style="border-right: 1px solid rgb(200, 200, 200)">
             <ul class="list-group list-group-flush">
                 @foreach ($catagory as $list)
-                <li class="list-group-item"><a href="{{ route('username',$list->cata_username) }}" class="nav-link"><i
+                <li class="list-group-item"><a href="{{ route('username',$list->cata_id) }}" class="nav-link"><i
                             class="{{ $list->cata_icon }}" style="margin-right:10px;"></i> {{$list->cata_name}} </a>
                 </li>
                 @endforeach

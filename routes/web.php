@@ -46,7 +46,7 @@ Route::controller(ProductController::class)->group(function () {
 Route::controller(HomemodelController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
-    Route::get('/category/{username}', 'cata')->name('username');
+    Route::get('/category/{cata_id}', 'cata')->name('username');
 });
 
 
@@ -63,6 +63,9 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     Route::get('/pendingads', 'pendingads')->name('pendingads');
     Route::get('/editads/{ads_id}', 'adsedit')->name('editads');
     Route::put('/upads/{ads_id}', 'bupdate')->name('upads');
+
+    //member request
+    Route::post('/memberequest', 'memberequest')->name('memberequest');
 });
 
 

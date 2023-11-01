@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catagories;
 use App\Models\image;
 use App\Models\location;
+use App\Models\Membership;
 use App\Models\postads;
 use App\Models\status;
 use Illuminate\Http\Request;
@@ -34,9 +35,9 @@ class AlladsController extends Controller
      */
     public function adspost()
 
-    {  
-        $data['membership'] =Auth::user()->membership;
-        $data['adsnum'] = postads::where('user_name',Auth::user()->username)->count();
+    {
+        $data['membership'] = Auth::user()->membership;
+        $data['adsnum'] = postads::where('user_name', Auth::user()->username)->count();
         $data['location'] = location::orderBy('loc_id', 'DESC')->get();
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
         $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
@@ -178,5 +179,19 @@ class AlladsController extends Controller
         $postadsModel->fill($request->all())->save();
 
         return back();
+    }
+    public function memberequest(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'paymentMethod' => 'required',
+
+        ]);
+        if ($validator->passes()) {
+            Membership::create($request->post());
+        }
     }
 }

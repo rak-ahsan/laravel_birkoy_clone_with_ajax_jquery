@@ -7,27 +7,32 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form action="">
+                    <form action="" id="from" method="POST">
+                        @csrf
+                        <span id="msg"></span>
                         <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" value="{{$user->name}}"
+                                <input type="text" class="form-control" id="name" value="{{$user->name}}"
                                     name="name">
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword" value="{{$user->email}}"
+                                <input type="text" class="form-control" id="email" value="{{$user->email}}"
                                     name="email">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">number</label>
+                            <label for="number" class="col-sm-2 col-form-label">number</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword" value="{{$user->number}}"
+                                <input type="text" class="form-control" id="number" value="{{$user->number}}"
                                     name="number">
+
+                                    <input type="number" class="form-control" id="user_id" value="{{$user->id}}"
+                                    name="user_id">
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -51,6 +56,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <input type="submit" value="Request" id="sub">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -67,30 +75,26 @@
             e.preventDefault();
             var form = $("#from")[0];
             var formData = new FormData(form);
-            var name = $("#cata_name").val();
-            var icon = $("#cata_icon").val();
-            var username = $("#cata_username").val();
-
+            var name = $("#name").val();
+            var icon = $("#email").val();
+            var username = $("#paymentMethod").val();
             if (name === '' || icon === '' || username === '') {
                 $('#msg').html('All Fields Are Required');
                 return;
             } else {
                 $('#msg').html('');
             }
-
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: 'category',
+                url: '{{ route('memberequest') }}',
                 type: 'post',
                 data: formData,
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    $('.table').load(location.href + ' .table')
-                    $('#exampleModal').modal('hide')
-                    $('#from')[0].reset();
+                    alert('ok')
                 }
             });
         });
