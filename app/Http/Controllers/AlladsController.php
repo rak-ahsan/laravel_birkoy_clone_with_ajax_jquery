@@ -26,7 +26,7 @@ class AlladsController extends Controller
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->orderBy('ads_id', 'DESC')
             ->where('ads_status', 4)
-            ->paginate(10);
+            ->paginate(30);
 
         return view('Frontend.allads', $data);
     }

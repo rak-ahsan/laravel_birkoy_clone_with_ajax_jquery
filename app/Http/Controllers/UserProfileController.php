@@ -33,7 +33,7 @@ class UserProfileController extends Controller
     // backend
     public function alluser()
     {
-        $data['user'] = User::orderBy('id', 'DESC')->get();
+        $data['user'] = User::orderBy('id', 'DESC')->paginate(10);;
         return view('backend.user.alluser', $data);
     }
 
