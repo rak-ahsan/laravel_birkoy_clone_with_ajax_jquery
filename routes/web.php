@@ -46,7 +46,7 @@ Route::controller(ProductController::class)->group(function () {
 Route::controller(HomemodelController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
-    Route::get('/category/{username}', 'cata')->name('username');
+    Route::get('/category/{cata_id}', 'cata')->name('username');
 });
 
 
@@ -63,6 +63,10 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     Route::get('/pendingads', 'pendingads')->name('pendingads');
     Route::get('/editads/{ads_id}', 'adsedit')->name('editads');
     Route::put('/upads/{ads_id}', 'bupdate')->name('upads');
+
+    //member request
+    Route::post('/memberequest', 'memberequest')->name('memberequest');
+    Route::get('/memberdelete/{mem_id}', 'destroy')->name('memberdelete');
 });
 
 
@@ -82,6 +86,11 @@ Route::controller(UserProfileController::class)->group(function () {
     Route::get('/alluser', 'alluser')->name('alluser');
     Route::get('/paiduser', 'paidmember')->name('paidmember');
     Route::get('/freeuser', 'freemember')->name('freemember');
+    Route::get('/memberequest', 'pending')->name('memberequest');
+
+    // membership
+    Route::get('/edit/{username}', 'getuser')->name('getuser');
+    Route::put('/update/{username}', 'userupdate')->name('userupdate');
 });
 
 Route::controller(ChatModelController::class)->group(function () {

@@ -38,6 +38,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="mt-3 text-white">
+            {{ $ads->links() }}
+        </div>
     </div>
 </div>
 

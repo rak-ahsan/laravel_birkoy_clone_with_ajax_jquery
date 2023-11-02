@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Catagories;
 use App\Models\image;
 use App\Models\location;
+use App\Models\Membership;
 use App\Models\postads;
 use App\Models\status;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +26,7 @@ class AlladsController extends Controller
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->orderBy('ads_id', 'DESC')
             ->where('ads_status', 4)
-            ->paginate(10);
+            ->paginate(30);
 
         return view('Frontend.allads', $data);
     }
@@ -34,9 +36,9 @@ class AlladsController extends Controller
      */
     public function adspost()
 
-    {  
-        $data['membership'] =Auth::user()->membership;
-        $data['adsnum'] = postads::where('user_name',Auth::user()->username)->count();
+    {
+        $data['membership'] = Auth::user()->membership;
+        $data['adsnum'] = postads::where('user_name', Auth::user()->username)->count();
         $data['location'] = location::orderBy('loc_id', 'DESC')->get();
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
         $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
@@ -119,14 +121,6 @@ class AlladsController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
     // for backend
 
     public function alladsview()
@@ -177,6 +171,26 @@ class AlladsController extends Controller
         $postadsModel = Postads::find($ads_id);
         $postadsModel->fill($request->all())->save();
 
+        return back();
+    }
+    public function memberequest(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'mem_name' => 'required',
+            'mem_email' => 'required',
+            'mem_number' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            Membership::create($request->post());
+        }
+    }
+
+    public function destroy($mem_id)
+    {
+        $data = Membership::where('mem_id', $mem_id);
+        $data->delete();
         return back();
     }
 }

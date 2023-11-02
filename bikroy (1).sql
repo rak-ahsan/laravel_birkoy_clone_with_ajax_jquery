@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2023 at 06:42 PM
+-- Generation Time: Nov 01, 2023 at 08:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -143,6 +143,23 @@ INSERT INTO `locations` (`loc_id`, `loc_name`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `memberships`
+--
+
+CREATE TABLE `memberships` (
+  `mem_id` bigint(20) UNSIGNED NOT NULL,
+  `mem_name` varchar(255) NOT NULL,
+  `mem_email` varchar(255) NOT NULL,
+  `mem_number` varchar(255) NOT NULL,
+  `paymentMethod` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -165,7 +182,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2023_10_26_034345_create_catagories_table', 3),
 (7, '2023_10_28_041208_create_postads_table', 4),
 (8, '2023_10_29_171340_create_images_table', 4),
-(9, '2023_10_31_104618_create_statuses_table', 5);
+(9, '2023_10_31_104618_create_statuses_table', 5),
+(11, '2023_11_01_101218_create_memberships_table', 6);
 
 -- --------------------------------------------------------
 
@@ -283,8 +301,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `number`, `user_img`, `location`, `username`, `membership`) VALUES
-(7, 'Rakib Ahsan', 'cloudysky121@gmail.com', NULL, '$2y$10$EfL4pxLGa6ndSgw9.Z.ZtuXPOajlJdXgwxylKgs9DV2h2LIHURKqO', NULL, '2023-10-29 23:43:37', '2023-10-29 23:43:37', '01775566772', '1698644617.webp', 1, 'rakib', 1),
-(8, 'Pial Rahman', 'pial@gmail.com', NULL, '$2y$10$i65Wr2DTmO7DuBXpIxZkZ..X6FdgR6T5IdalieDBG9VqdwcW/VJEm', NULL, '2023-10-30 10:11:24', '2023-10-30 10:11:24', '01785248796', '1698682284.webp', 2, 'pial', 1);
+(7, 'Rakib Ahsan', 'cloudysky121@gmail.com', NULL, '$2y$10$EfL4pxLGa6ndSgw9.Z.ZtuXPOajlJdXgwxylKgs9DV2h2LIHURKqO', NULL, '2023-10-29 23:43:37', '2023-11-01 11:06:15', '01775566772', '1698644617.webp', 1, 'rakib', 2),
+(8, 'Pial Rahman', 'pial@gmail.com', NULL, '$2y$10$i65Wr2DTmO7DuBXpIxZkZ..X6FdgR6T5IdalieDBG9VqdwcW/VJEm', NULL, '2023-10-30 10:11:24', '2023-11-01 11:58:42', '01785248796', '1698682284.webp', 2, 'pial', 1);
 
 --
 -- Indexes for dumped tables
@@ -314,6 +332,12 @@ ALTER TABLE `images`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`loc_id`);
+
+--
+-- Indexes for table `memberships`
+--
+ALTER TABLE `memberships`
+  ADD PRIMARY KEY (`mem_id`);
 
 --
 -- Indexes for table `migrations`
@@ -384,10 +408,16 @@ ALTER TABLE `locations`
   MODIFY `loc_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `memberships`
+--
+ALTER TABLE `memberships`
+  MODIFY `mem_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

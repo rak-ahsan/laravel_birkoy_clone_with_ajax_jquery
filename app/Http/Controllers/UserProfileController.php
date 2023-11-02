@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use App\Models\Membership;
 use App\Models\postads;
 use App\Models\User;
 use App\Models\UserProfile;
@@ -23,63 +25,15 @@ class UserProfileController extends Controller
             ->where('ads_status', 4)
             ->get();
 
-        $data['adsnum'] = postads::where('user_name',$username)->count();
-        session()->put('adscount',$data['adsnum']);
+        $data['adsnum'] = postads::where('user_name', $username)->count();
+        session()->put('adscount', $data['adsnum']);
         return view('Frontend.userprofile', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(UserProfile $userProfile)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UserProfile $userProfile)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, UserProfile $userProfile)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(UserProfile $userProfile)
-    {
-        //
     }
 
     // backend
     public function alluser()
     {
-        $data['user'] = User::orderBy('id', 'DESC')->get();
+        $data['user'] = User::orderBy('id', 'DESC')->paginate(10);;
         return view('backend.user.alluser', $data);
     }
 
@@ -97,5 +51,36 @@ class UserProfileController extends Controller
             ->where('membership', 2)
             ->get();
         return view('backend.user.paidmember', $data);
+    }
+
+    public function pending()
+    {
+        $data['user'] = Membership::orderBy('mem_id', 'DESC')
+            ->join('users', 'memberships.user_id', '=', 'users.id')
+            ->get();
+        return view('backend.user.pendinguser', $data);
+    }
+
+    public function getuser($username)
+    {
+        $data['user'] = User::orderBy('id', 'DESC')
+            ->where('username', $username)
+            ->first();
+        return view('backend.user.update', $data);
+    }
+
+    public function userupdate(Request $request, $username)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'number' => 'required',
+            'membership' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            $users = User::where('username', $username)->first();
+            $users->fill($request->all())->save();
+            return back();
+        }
     }
 }

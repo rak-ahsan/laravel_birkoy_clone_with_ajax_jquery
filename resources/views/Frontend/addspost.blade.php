@@ -1,5 +1,6 @@
 @extends('Frontend.layout.Head')
 @section('content')
+@include('backend.user.membership')
 <div class="container">
     <form action="{{ route('adstore') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -206,7 +207,7 @@
                     </div>
                     @elseif($adsnum >= 10)
                     <div class="mt-3 text-end">
-                        <a href="#" class="btn btn-success px-5 text-dark nav-link p-2" style="background-color: #ffc800">Limit Reach To Post More Ads Buy Membership</a>
+                        <a href="#" class="btn btn-success px-5 text-dark nav-link p-2" style="background-color: #ffc800" data-bs-toggle="modal" data-bs-target="#exampleModal">Limit Reach To Post More Ads Buy Membership</a>
                     </div>
                     @endif
                     </div>

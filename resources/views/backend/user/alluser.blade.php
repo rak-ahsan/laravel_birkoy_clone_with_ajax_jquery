@@ -44,6 +44,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="mt-3 text-white">
+            {{ $user->links() }}
+        </div>
     </div>
 </div>
 
