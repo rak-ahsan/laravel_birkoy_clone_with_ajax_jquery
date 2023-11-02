@@ -199,12 +199,12 @@
                     </div>
                     @if($membership==1)
                     <div class="1"> 
-                    @if ($adsnum < 3)
+                    @if ($adsnum < 10)
                     You're a freemember Your Ads Limits 10 You Can Post {{ 10 - $adsnum }} More Ads </b></p>
                     <div class="mt-3 text-end">
                         <button type="submit" class="btn btn-success px-5">Post ad</button>
                     </div>
-                    @elseif($adsnum >= 3)
+                    @elseif($adsnum >= 10)
                     <div class="mt-3 text-end">
                         <a href="#" class="btn btn-success px-5 text-dark nav-link p-2" style="background-color: #ffc800">Limit Reach To Post More Ads Buy Membership</a>
                     </div>
