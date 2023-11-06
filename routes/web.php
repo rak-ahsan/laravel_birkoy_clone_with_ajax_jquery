@@ -92,6 +92,8 @@ Route::controller(UserProfileController::class)->group(function () {
 
     // settings
     Route::get('/usersetting/ads', 'userads')->name('userads');
+    Route::get('/edituserads/{ads_id}', 'useradsedit')->name('edituserads');
+
 
     // membership
     Route::get('/edit/{username}', 'getuser')->name('getuser');

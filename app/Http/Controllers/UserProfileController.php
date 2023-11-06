@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catagories;
+use App\Models\location;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Membership;
 use App\Models\postads;
 use App\Models\User;
-use App\Models\UserProfile;
+use App\Models\status;
 use Illuminate\Http\Request;
 
 
@@ -103,9 +105,18 @@ class UserProfileController extends Controller
     public function userads(){
         $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
-            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->join('statuses', 'postads.ads_status', '=', 'statuses.status_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name','statuses.status_name')
             ->orderBy('ads_id', 'DESC')
             ->paginate(10);
         return view('Frontend.userprofileads',$data);
+    }
+
+    public function useradsedit($ads_id){
+        $data['location'] = location::orderBy('loc_id', 'DESC')->get();
+        $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
+        $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
+        $data['ads'] = postads::find($ads_id);
+        return view('Frontend.useradsedit',$data);
     }
 }
