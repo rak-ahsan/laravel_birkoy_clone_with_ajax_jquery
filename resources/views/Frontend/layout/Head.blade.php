@@ -32,8 +32,14 @@
                 </li>
                 
                 @if (Auth::user())
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href=" {{ route('userprofile',Auth::user()->username) }}"><i class="fa-solid fa-user-large px-2" style="color: #ffffff;"></i> My Account</a>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user-large px-2" style="color: #ffffff;"></i> My Account</a>
+                </a>
+                <ul class="dropdown-menu text-dark">
+                  <li><a class="dropdown-item nav-link bg-color"  href=" {{ route('userprofile',Auth::user()->username) }}">Profile</a><li>
+                  <li><a class="dropdown-item nav-link bg-color" href="{{route('settings')}}">Settings</a></li>
+                </ul>
               </li>
               <form method="POST" action="{{ route('logout') }}" id="logout-form">
                 @csrf

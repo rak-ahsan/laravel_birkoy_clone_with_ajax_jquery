@@ -88,6 +88,10 @@ Route::controller(UserProfileController::class)->group(function () {
     Route::get('/freeuser', 'freemember')->name('freemember');
     Route::get('/memberequest', 'pending')->name('memberequest');
     Route::get('/userdelete/{id}', 'destroy')->name('userdelete');
+    Route::get('/usersetting', 'settings')->name('settings');
+
+    // settings
+    Route::get('/usersetting/ads', 'userads')->name('userads');
 
     // membership
     Route::get('/edit/{username}', 'getuser')->name('getuser');

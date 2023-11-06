@@ -93,4 +93,19 @@ class UserProfileController extends Controller
         $data->delete();
         return back();
     }
+
+    // settings part
+
+    public function settings(){
+        return view('Frontend.layout.profilesettings');
+    }
+
+    public function userads(){
+        $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->orderBy('ads_id', 'DESC')
+            ->paginate(10);
+        return view('Frontend.userprofileads',$data);
+    }
 }

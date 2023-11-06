@@ -80,11 +80,13 @@ nav li a {
     color: #009877;
 }
 
+
 /* .scrollbar-auto {
     scrollbar-color: auto;
     height: 100vh;
     overflow-y: scroll;
 } */
+
 .fixed {
     position: fixed;
     top: 50;
@@ -137,9 +139,11 @@ main {
     vertical-align: top;
 }
 
+
 /* aside header {
       padding: 30px 20px;
   } */
+
 
 /* aside input {
       width: 100%;
@@ -180,6 +184,7 @@ h2,
 h3 {
     margin: 0;
 }
+
 
 /* aside li img {
       border-radius: 50%;
@@ -366,4 +371,17 @@ main footer a {
     margin-left: 333px;
     margin-top: 5px;
     display: inline-block;
+}
+
+
+/* nav color */
+
+.bg-color {
+    background-color: #149777;
+    color: black;
+}
+
+.bg-color:hover {
+    background-color: #149777;
+    color: black;
 }
