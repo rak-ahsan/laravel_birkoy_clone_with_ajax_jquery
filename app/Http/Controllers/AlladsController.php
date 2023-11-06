@@ -165,9 +165,9 @@ class AlladsController extends Controller
             return redirect()->route('editads', $ads_id)->withErrors($validator)->withInput();
         }
 
-        $uads = postads::find($ads_id);
-        $uads->fill($request->post())->save();
-
+        // $uads = postads::find($ads_id);
+        // $uads->fill($request->post())->save();
+        
         $postadsModel = Postads::find($ads_id);
         $postadsModel->fill($request->all())->save();
 

@@ -1,8 +1,9 @@
-@extends('Frontend.layout.profilesettings')
-@section('profile')
+@extends('Frontend.layout.Head')
+@section('content')
 <div class="container">
-    <form action="{{ route('adstore') }}" method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" action="{{ route('upads', ['ads_id' => $ads->ads_id]) }}">
         @csrf
+        @method('put')
         <div class="row">
             <div class="formdesign mt-4 p-3" style="background-color: #fff">
                 <div class="top col-md-12 d-flex justify-content-between">
@@ -187,6 +188,7 @@
                                 value="{{$ads->pos_number}}">
                             <input type="hidden" class="form-control" id="inputPassword" name="user_name"
                                 value="{{ Auth::user()->username}}">
+                            <input type="hidden" value="3" name="ads_status">
                         </div>
                     </div>
                     @error('pos_number')
