@@ -23,12 +23,21 @@ class UserProfileController extends Controller
             ->join('locations','locations.loc_id' ,'=','users.location')
             ->first();
 
-        $data['ads'] = postads::where('user_name', $username)
+            $data['ads'] = postads::where('user_name', $username)
             ->join('locations','postads.ads_loc' ,'=','locations.loc_id')
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
             ->orderBy('ads_id', 'desc')
             ->where('ads_status', 4)
+            ->get();
+
+
+            $data['pendingads'] = postads::where('user_name', $username)
+            ->join('locations','postads.ads_loc' ,'=','locations.loc_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->orderBy('ads_id', 'desc')
+            ->where('ads_status', 3)
             ->get();
 
         $data['adsnum'] = postads::where('user_name', $username)->count();

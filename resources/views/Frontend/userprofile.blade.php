@@ -28,6 +28,7 @@
                     
                     @if (Auth::user() && Auth::user()->id == $user->id && Auth::user()->membership == 1)
                     <li class="list-group-item text-center">
+
                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                             style="background-color: #ffc800">
                             Buy Membership Now
@@ -47,7 +48,35 @@
                 You're a freemember Your Ads Limits 10 You Can Post {{ 10 - $adsnum }} more Ads </b></p>
                 @endif
             </div>
+            <h5 class="text-center">Active Ads</h5>
+
             @foreach ($ads as $list )
+            <div class="post">
+                <a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link">
+                    <div class="card my-3">
+                        <div class="row g-0 p-3">
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/ads/' . $list->mainphoto) }}" class="img-fluid rounded-start"
+                                    alt="..." style="height: 200px">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{$list->title}}</h5>
+                                    <p class="card-text"> {{$list->loc_name}} , {{$list->cata_name}}</p>
+                                    <p class="card-text"><span style="color: #149777; font-size:20px ">Tk
+                                            {{$list->price}}</span></p>
+                                </div>
+                                <p class="text-end px-4">@datetime($list->created_at)</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+            <!-- pending -->
+            <h5 class="text-center">Pending Ads</h5>
+            @foreach ($pendingads as $list )
             <div class="post">
                 <a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link">
                     <div class="card my-3">
