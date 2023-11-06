@@ -54,13 +54,13 @@
             <label for="" class="text-center fw-bolder mt-3">Conditions</label>
             <div class="main d-flex justify-content-around align-items-center">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="condtions" id="flexRadioDefault1" value="used">
+                    <input class="form-check-input" type="radio" name="condtions" id="flexRadioDefault1" value="used" {{$ads->condtions=='used' ? 'checked' : ''}}>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Used
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="condtions" id="flexRadioDefault2" value="new">
+                    <input class="form-check-input" type="radio" name="condtions" id="flexRadioDefault2" value="new" {{$ads->condtions=='new' ? 'checked' : ''}}>
                     <label class="form-check-label" for="flexRadioDefault2">
                         New
                     </label>
@@ -73,7 +73,7 @@
             <div class="main d-flex justify-content-around">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="authenticity" id="flexRadioDefault3"
-                        value="orginal">
+                        value="orginal" {{$ads->authenticity=='orginal' ? 'checked' : ''}}>
                     <label class="form-check-label" for="flexRadioDefault3">
                         Original
                     </label>
@@ -81,7 +81,7 @@
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="authenticity" id="flexRadioDefault4"
-                        value="refurbished">
+                        value="refurbished" {{$ads->authenticity=='refurbished' ? 'checked' : ''}}>
                     <label class="form-check-label" for="flexRadioDefault4">
                         Refurbished
                     </label>
@@ -94,7 +94,7 @@
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-5">Brand</label>
                     <input type="text" class="form-control" id="inputPassword2" placeholder="Brand" name="brand"
-                        value="{{old('brand')}}">
+                        value="{{$ads->brand}}">
                 </div>
             </div>
             @error('authenticity')
@@ -104,7 +104,7 @@
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-3">Model</label>
                     <input type="text" class="form-control" id="inputPassword2" placeholder="Model" name="model"
-                        value="{{old('model')}}">
+                        value="{{$ads->model}}">
                 </div>
             </div>
             @error('model')
@@ -115,7 +115,7 @@
                     <label for="" class="text-end fw-bolder mt-3">Product Description</label>
                     <textarea class="form-control" placeholder="Enter Description" id="floatingTextarea2"
                         style="height: 100px" name="desc">
-                      {{old('desc')}}
+                      {{trim($ads->desc)}}
                     </textarea>
                 </div>
             </div>
@@ -125,7 +125,7 @@
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-3">Product Price</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="Price" name="price">
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="Price" name="price" value="{{$ads->price}}">
                 </div>
             </div>
             @error('price')
@@ -135,13 +135,13 @@
                 <div class="col-md-6">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-                            name="nego">
+                            name="nego" {{$ads->nego=='on' ? 'checked' : ''}}>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Negotiable</label>
                     </div>
                 </div>
             </div>
             <hr>
-            <div class="form-floating d-flex justify-content-around align-items-center mb-3">
+            <!-- <div class="form-floating d-flex justify-content-around align-items-center mb-3">
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="mainphoto" class="form-label fw-bolder">Main Photo </label>
@@ -166,7 +166,7 @@
                     @enderror
                 </div>
             </div>
-            <hr>
+            <hr> -->
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <h6>Contact details</h6>
@@ -184,7 +184,7 @@
                         <label for="" class="text-end fw-bolder mt-3">Number</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="inputPassword" name="pos_number"
-                                value="{{old('number')}}">
+                                value="{{$ads->pos_number}}">
                             <input type="hidden" class="form-control" id="inputPassword" name="user_name"
                                 value="{{ Auth::user()->username}}">
                         </div>
