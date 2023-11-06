@@ -40,7 +40,7 @@
 
             <div class="row ">
                 <div class="price-part justify-content-start align-items-center d-flex mt-3">
-                    <span class="text-p">{{$singelproduct->price}}</span>
+                    <span class="text-p">Tk {{$singelproduct->price}}</span>
                     <span class="px-3">Negotiable</span>
                     <div class="like">
                         <a href="#" class="nav-link" onclick="dlike(event)">

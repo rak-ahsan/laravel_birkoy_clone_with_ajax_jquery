@@ -87,6 +87,7 @@ Route::controller(UserProfileController::class)->group(function () {
     Route::get('/paiduser', 'paidmember')->name('paidmember');
     Route::get('/freeuser', 'freemember')->name('freemember');
     Route::get('/memberequest', 'pending')->name('memberequest');
+    Route::get('/userdelete/{id}', 'destroy')->name('userdelete');
 
     // membership
     Route::get('/edit/{username}', 'getuser')->name('getuser');
