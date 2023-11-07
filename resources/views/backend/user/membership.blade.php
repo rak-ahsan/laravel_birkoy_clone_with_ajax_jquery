@@ -19,6 +19,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="mem_name" value="{{$user->name}}"
                                     name="mem_name">
+                                    <input type="hidden" value="{{$user->username}}" name="user_name">
                             </div>
                         </div>
                         <div class="mb-3 row">

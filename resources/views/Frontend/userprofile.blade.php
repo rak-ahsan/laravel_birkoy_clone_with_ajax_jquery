@@ -25,14 +25,18 @@
                     <li class="list-group-item">Phone Number : {{$user->number}}</li>
                     <li class="list-group-item">Email Address : {{$user->email}}</li>
                     <li class="list-group-item">Location: {{$user->loc_name}}</li>
-                    
+
                     @if (Auth::user() && Auth::user()->id == $user->id && Auth::user()->membership == 1)
                     <li class="list-group-item text-center">
 
+                        @if ($mem !==null &&  $mem->user_name == Auth::user()->username)
+                           <span>We've Recived Your Membership Request</span>
+                        @else
                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                             style="background-color: #ffc800">
                             Buy Membership Now
                         </button>
+                        @endif
                     </li>
                     @endif
 
@@ -44,8 +48,8 @@
         <div class="col-md-8 p-3">
             <div class="d-flex">
                 <p><b>Adds Posted By {{$user->name}} <br>
-                @if (Auth::user() && Auth::user()->id == $user->id && Auth::user()->membership == 1)
-                You're a freemember Your Ads Limits 10 You Can Post {{ 10 - $adsnum }} more Ads </b></p>
+                        @if (Auth::user() && Auth::user()->id == $user->id && Auth::user()->membership == 1)
+                        You're a freemember Your Ads Limits 10 You Can Post {{ 10 - $adsnum }} more Ads </b></p>
                 @endif
             </div>
             <h5 class="text-center">Active Ads</h5>

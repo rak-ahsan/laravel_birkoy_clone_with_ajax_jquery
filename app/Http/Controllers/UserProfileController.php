@@ -20,11 +20,11 @@ class UserProfileController extends Controller
     public function index($username, Request $request)
     {
         $data['user'] = User::where('username', $username)
-            ->join('locations','locations.loc_id' ,'=','users.location')
+            ->join('locations', 'locations.loc_id', '=', 'users.location')
             ->first();
 
-            $data['ads'] = postads::where('user_name', $username)
-            ->join('locations','postads.ads_loc' ,'=','locations.loc_id')
+        $data['ads'] = postads::where('user_name', $username)
+            ->join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
             ->orderBy('ads_id', 'desc')
@@ -32,13 +32,18 @@ class UserProfileController extends Controller
             ->get();
 
 
-            $data['pendingads'] = postads::where('user_name', $username)
-            ->join('locations','postads.ads_loc' ,'=','locations.loc_id')
+        $data['pendingads'] = postads::where('user_name', $username)
+            ->join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
             ->orderBy('ads_id', 'desc')
             ->where('ads_status', 3)
             ->get();
+
+        $data['mem'] = Membership::where('user_name', $username)
+            ->orderBy('mem_id', 'desc')
+            ->first();
+        // return dd($data);
 
         $data['adsnum'] = postads::where('user_name', $username)->count();
         return view('Frontend.userprofile', $data);
@@ -107,25 +112,28 @@ class UserProfileController extends Controller
 
     // settings part
 
-    public function settings(){
+    public function settings()
+    {
         return view('Frontend.layout.profilesettings');
     }
 
-    public function userads(){
+    public function userads()
+    {
         $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
             ->join('statuses', 'postads.ads_status', '=', 'statuses.status_id')
-            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name','statuses.status_name')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name', 'statuses.status_name')
             ->orderBy('ads_id', 'DESC')
             ->paginate(10);
-        return view('Frontend.userprofileads',$data);
+        return view('Frontend.userprofileads', $data);
     }
 
-    public function useradsedit($ads_id){
+    public function useradsedit($ads_id)
+    {
         $data['location'] = location::orderBy('loc_id', 'DESC')->get();
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
         $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
         $data['ads'] = postads::find($ads_id);
-        return view('Frontend.useradsedit',$data);
+        return view('Frontend.useradsedit', $data);
     }
 }
