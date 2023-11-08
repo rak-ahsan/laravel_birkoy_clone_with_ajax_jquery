@@ -20,6 +20,7 @@ class ProductViewController extends Controller
         $data['like'] = Like::where('product_id', $post)->get();
         $data['comment'] = comment::where('product_id', $post)
             ->join('users', 'users.id', '=', 'comments.user_id')
+            ->orderby('comment_id', 'DESC')
             ->get();
         $data['liker'] = Like::where('user_id', auth()->user()->id)->first();
         $data['singelproduct'] = postads::join('users', 'users.username', '=', 'postads.user_name')
@@ -60,6 +61,13 @@ class ProductViewController extends Controller
             'comment' => $request->comment,
         ];
         Comment::create($data);
+        return redirect()->back();
+    }
+
+    public function dcomment($id)
+    {
+        $data = Comment::where('comment_id', $id);
+        $data->delete();
         return redirect()->back();
     }
 }

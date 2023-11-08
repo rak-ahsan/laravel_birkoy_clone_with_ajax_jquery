@@ -81,6 +81,7 @@ Route::controller(ProductViewController::class)->group(function () {
 
     // commwnt
     Route::get('comment/{id}', 'comment')->name('comment');
+    Route::get('dcomment/{id}', 'dcomment')->name('dcomment');
 });
 
 Route::controller(UserProfileController::class)->group(function () {

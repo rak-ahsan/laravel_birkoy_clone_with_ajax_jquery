@@ -135,7 +135,7 @@
 
 <div class="container shadow mt-5 " style="background-color: #fff; max-height:500px">
     <div class="row">
-        <div class="col-md-6 mt-3">
+        <div class="col-md-6 mt-3 mb-2">
             <form class="d-flex" action="{{route('comment',$singelproduct->ads_id)}}">
                 <input class="form-control me-2" type="search" placeholder="Post Your Comment" aria-label="Search" name="comment">
                 <button class="btn btn-outline-success" type="submit">Submit</button>
@@ -144,12 +144,16 @@
     </div>
     @foreach ($comment as $list )
     <div class="row mt-3 align-items-center">
-        <div class="pic col-md-1 mx-3">
-            <img src="{{ asset('img/bagmoney.png') }}" alt="" srcset="" style="height: 100px;">
+        <div class="pic col-md-1 mx-1">
+            <img src="{{ asset('img/user/' . $list->user_img) }}" alt="" style="height: 50px; border-radius: 50px;">
         </div>
-        <div class="comment col-md-4 p-3" style="background-color: #F0F2F5; border-radius:20px">
-            <span>Rakib Ahssan</span><br>
-            <span>Daam Kom koren aktu</span>
+        <div class="comment col-md-4 mb-2" style="background-color: #F0F2F5; border-radius:20px">
+            <span><b>{{$list->name}}</b></span> <br>
+            <span>{{$list->comment}}</span> 
+            
+            @if ($list!== null && $list->user_id == Auth::user()->id)
+                <a href="{{route('dcomment', $list->comment_id)}}"><i class="fa-solid fa-trash mx-4" style="color: red;"></i></a><br>
+            @endif
         </div>
     </div>  
     @endforeach
