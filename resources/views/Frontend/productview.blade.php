@@ -46,10 +46,16 @@
                         <a href="#" class="nav-link" onclick="dlike(event)">
                             <i class="fa-regular fa-heart fa-xl"></i> <span id="dlike">50 </span>
                         </a>
-                        <a href="" class="nav-link" onclick="like(event)">
-                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i><span id="like">
-                                50</span><span id="count"></span>
+                        <a href="" class="nav-link" onclick="like(event)" ondblclick="dlike(event)">
+                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i>
+                            <span id="like">50</span>
                         </a>
+{{-- 
+                        <a href="" class="nav-link" onclick="toggleLike(event)">
+                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i>
+                            <span id="like">50</span>
+                        </a> --}}
+                        
                     </div>
                 </div>
 
@@ -158,20 +164,40 @@
 
     }
 
-    function like(e) {
+    // function like(e) {
 
-        e.preventDefault();
-        var like = document.getElementById('like');
-        var likes = parseInt(like.innerHTML) + 1;
-        like.innerHTML = likes;
-    }
+    //     e.preventDefault();
+    //     var like = document.getElementById('like');
+    //     var likes = parseInt(like.innerHTML) + 1;
+    //     like.innerHTML = likes;
+    // }
 
-    function dlike(e) {
-        e.preventDefault();
-        var dlike = document.getElementById('dlike');
-        var likes = parseInt(dlike.innerHTML) - 1;
-        dlike.innerHTML = likes;
-    }
+    // function dlike(e) {
+    //     e.preventDefault();
+    //     var dlike = document.getElementById('dlike');
+    //     var likes = parseInt(dlike.innerHTML) - 1;
+    //     dlike.innerHTML = likes;
+    // }
+
+    var liked = false; // Initial state is unliked
+
+// function toggleLike(e) {
+//     e.preventDefault();
+//     var likeCount = document.getElementById('like');
+
+//     if (liked) {
+//         // If already liked, double-click unlikes it
+//         var likes = parseInt(likeCount.innerHTML) - 1;
+//         likeCount.innerHTML = likes;
+//     } else {
+//         // If not liked, single-click likes it
+//         var likes = parseInt(likeCount.innerHTML) + 1;
+//         likeCount.innerHTML = likes;
+//     }
+
+//     liked = !liked; // Toggle the liked state
+// }
+
 
 </script>
 
