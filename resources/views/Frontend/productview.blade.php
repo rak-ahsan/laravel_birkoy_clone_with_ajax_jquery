@@ -43,13 +43,17 @@
                     <span class="text-p">Tk {{$singelproduct->price}}</span>
                     <span class="px-3">Negotiable</span>
                     <div class="like">
-                        <a href="#" class="nav-link" onclick="dlike(event)">
-                            <i class="fa-regular fa-heart fa-xl"></i> <span id="dlike">50 </span>
+                        @if ($liker!== null && $liker->user_id == Auth::user()->id)
+                        <a href="{{route('dlike',auth()->user()->id)}}" class="nav-link" onclick="dlike(event)">
+                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i> <span id="dlike">{{$like->count()}} </span>
                         </a>
-                        <a href="" class="nav-link" onclick="like(event)" ondblclick="dlike(event)">
-                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i>
-                            <span id="like">50</span>
+                        @else
+                        <a href="{{route('like',$singelproduct->ads_id)}}" class="nav-link">
+                            <i class="fa-regular fa-heart fa-xl" ></i>
+                            <span id="like">{{$like->count()}}</span>
                         </a>
+                        @endif
+                        
 {{-- 
                         <a href="" class="nav-link" onclick="toggleLike(event)">
                             <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i>
