@@ -44,6 +44,7 @@ class ProductViewController extends Controller
     {
         $data = Like::where('user_id', $id);
         $data->delete();
+
         return redirect()->back();
     }
 }
