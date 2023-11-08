@@ -136,12 +136,13 @@
 <div class="container shadow mt-5 " style="background-color: #fff; max-height:500px">
     <div class="row">
         <div class="col-md-6 mt-3">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Post Your Comment" aria-label="Search">
+            <form class="d-flex" action="{{route('comment',$singelproduct->ads_id)}}">
+                <input class="form-control me-2" type="search" placeholder="Post Your Comment" aria-label="Search" name="comment">
                 <button class="btn btn-outline-success" type="submit">Submit</button>
             </form>
         </div>
     </div>
+    @foreach ($comment as $list )
     <div class="row mt-3 align-items-center">
         <div class="pic col-md-1 mx-3">
             <img src="{{ asset('img/bagmoney.png') }}" alt="" srcset="" style="height: 100px;">
@@ -150,7 +151,9 @@
             <span>Rakib Ahssan</span><br>
             <span>Daam Kom koren aktu</span>
         </div>
-    </div>
+    </div>  
+    @endforeach
+    
 </div>
 @include('Frontend.chat')
 

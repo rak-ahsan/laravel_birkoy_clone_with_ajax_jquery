@@ -75,8 +75,12 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
 Route::controller(ProductViewController::class)->group(function () {
 
     Route::get('/productview/{post}', 'index')->name('productview');
+    // like
     Route::get('like/{id}', 'like')->name('like');
     Route::get('dlike/{id}', 'dlike')->name('dlike');
+
+    // commwnt
+    Route::get('comment/{id}', 'comment')->name('comment');
 });
 
 Route::controller(UserProfileController::class)->group(function () {
