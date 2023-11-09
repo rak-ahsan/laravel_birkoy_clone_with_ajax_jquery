@@ -14,7 +14,8 @@ class ChatModelController extends Controller
      */
     public function index()
     {
-      return view('Frontend/chatlist');
+        $data['chats'] = message::get();
+      return view('Frontend/chatlist',$data);
     }
 
     /**

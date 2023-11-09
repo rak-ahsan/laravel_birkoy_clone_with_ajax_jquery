@@ -20,66 +20,31 @@
             </div>
         </div>
         <div class="col-md-8">
+            
             <div class="container mb-5">
                 <ul id="chat">
+                @foreach($chats as $chat)
                     <li class="you">
                         <div class="entete"><span class="status green"></span>
-                            <h2>Vincent</h2>
+                            <h2>{{$chat->sender}}</h2>
                             <h3>10:12AM,
                                 Today</h3>
                         </div>
                         <div class="triangle"></div>
-                        <div class="message">Lorem ipsum dolor sit amet,
-                            consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </div>
+                        <div class="message">{{$chat->message}} </div>
                     </li>
                     <li class="me">
                         <div class="entete">
                             <h3>10:12AM,
                                 Today</h3>
-                            <h2>Vincent</h2><span class="status blue"></span>
+                            <h2>{{$chat->reciver}}</h2><span class="status blue"></span>
                         </div>
                         <div class="triangle"></div>
                         <div class="message">Lorem ipsum dolor sit amet,
                             consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </div>
                     </li>
-                    {{-- <li class="me">
-                        <div class="entete">
-                            <h3>10:12AM,
-                                Today</h3>
-                            <h2>Vincent</h2><span class="status blue"></span>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">OK </div>
-                    </li>
-                    <li class="you">
-                        <div class="entete"><span class="status green"></span>
-                            <h2>Vincent</h2>
-                            <h3>10:12AM,
-                                Today</h3>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">Lorem ipsum dolor sit amet,
-                            consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </div>
-                    </li>
-                    <li class="me">
-                        <div class="entete">
-                            <h3>10:12AM,
-                                Today</h3>
-                            <h2>Vincent</h2><span class="status blue"></span>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">Lorem ipsum dolor sit amet,
-                            consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </div>
-                    </li>
-                    <li class="me">
-                        <div class="entete">
-                            <h3>10:12AM,
-                                Today</h3>
-                            <h2>Vincent</h2><span class="status blue"></span>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">OK </div>
-                    </li> --}}
+                    @endforeach
+
                 </ul>
                 <form action="">
                     <div class="col-md-12"><textarea class="form-control" placeholder="Enter Description"
