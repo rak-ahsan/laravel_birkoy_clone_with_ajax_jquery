@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ChatModel;
 use App\Models\message;
+use App\Models\postads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,7 @@ class ChatModelController extends Controller
         $data['chats'] = message::groupBy('product_id')
             ->select('product_id')
             ->get();
+
         return view('Frontend/chatlist', $data);
     }
 

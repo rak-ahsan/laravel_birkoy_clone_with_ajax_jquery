@@ -8,7 +8,7 @@
                 <div class="col d-flex mt-3">
                     <div class="img col-md-2"><img src="{{ asset('img/p.jpg') }}"
                             style="height: 50px; border-radius:50%"></div>
-                    <div class="des px-2"><b>{{$chat->product_id}}</b></div>
+                    <div class="des px-2"><b>g</b></div>
                 </div>
             </a>                         
             @endforeach
