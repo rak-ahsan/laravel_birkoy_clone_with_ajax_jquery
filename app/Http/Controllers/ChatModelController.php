@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChatModel;
+use App\Models\message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ChatModelController extends Controller
 {
@@ -28,7 +30,18 @@ class ChatModelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'sender' => 'required',
+            'product_id' => 'required',
+            'reciver' => 'required',
+            'message' => 'required'
+        ]);
+
+        if ($validator->passes()) {
+            message::create($request->post());
+        }    
+
+        return back();
     }
 
     /**

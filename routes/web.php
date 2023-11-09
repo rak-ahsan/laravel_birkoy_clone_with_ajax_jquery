@@ -110,6 +110,7 @@ Route::controller(UserProfileController::class)->group(function () {
 Route::controller(ChatModelController::class)->group(function () {
 
     Route::get('/chat', 'index')->name('chat');
+    Route::post('/chat','store')->name('chatstore');
 });
 
 Route::controller(CatagoriesController::class)->group(function () {

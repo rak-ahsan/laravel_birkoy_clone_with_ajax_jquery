@@ -37,10 +37,14 @@
                         </div>
                     </div>
                     <div class="chat mt-3">
-                        <form action="">
+                        <form action="{{route('chatstore')}}" method="post">
+                            @csrf
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a Message here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Message</label>
+                                <textarea class="form-control" name="message" placeholder="Leave a Message here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2" >Message</label>
+                                <input type="text" value="{{$singelproduct->ads_id}}" name="product_id">
+                                <input type="text" value="{{$singelproduct->user_name}}" name="reciver">
+                                <input type="text" value="{{Auth::user()->username}}" name="sender">
                             </div>
                             <div class="mt-3">
                                 <input type="submit" value="Send Message" class="btn btn-primary">
