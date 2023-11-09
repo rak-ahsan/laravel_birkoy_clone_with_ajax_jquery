@@ -77,6 +77,7 @@
             </div>
             @endforeach
             <!-- pending -->
+            @if (Auth::user()->id == $user->id )
             <h5 class="text-center">Pending Ads</h5>
             @foreach ($pendingads as $list )
             <div class="post">
@@ -102,6 +103,8 @@
                 </a>
             </div>
             @endforeach
+            @endif
+           
         </div>
     </div>
 </div>

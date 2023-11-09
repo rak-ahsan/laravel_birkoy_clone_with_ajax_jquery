@@ -14,8 +14,10 @@ class ChatModelController extends Controller
      */
     public function index()
     {
-        $data['chats'] = message::get();
-      return view('Frontend/chatlist',$data);
+        $data['chats'] = message::groupBy('product_id')
+            ->select('product_id')
+            ->get();
+        return view('Frontend/chatlist', $data);
     }
 
     /**
@@ -40,40 +42,18 @@ class ChatModelController extends Controller
 
         if ($validator->passes()) {
             message::create($request->post());
-        }    
+        }
 
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ChatModel $chatModel)
+    public function loadmsg($product_id)
     {
-        //
-    }
+        $data['chats'] = message::where('product_id', $product_id)->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ChatModel $chatModel)
-    {
-        //
-    }
+        // return dd($data);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ChatModel $chatModel)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ChatModel $chatModel)
-    {
-        //
+        return view('Frontend/messenger', $data);
     }
 }
