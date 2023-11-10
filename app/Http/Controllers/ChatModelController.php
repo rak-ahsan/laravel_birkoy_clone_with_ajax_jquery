@@ -15,9 +15,12 @@ class ChatModelController extends Controller
      */
     public function index()
     {
-        $data['chats'] = message::groupBy('product_id')
-            ->select('product_id')
+        $data['chats'] = Message::select('messages.*', 'postads.*')
+            ->groupBy('messages.product_id')
+            ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
             ->get();
+
+        // return dd($data);
 
         return view('Frontend/chatlist', $data);
     }

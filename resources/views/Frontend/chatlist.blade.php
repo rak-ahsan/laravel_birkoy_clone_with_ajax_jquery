@@ -1,17 +1,24 @@
-@extends('Frontend.layout.Head') @section('content') 
+@extends('Frontend.layout.Head') @section('content')
 <div class="container mt-5 shadow" style="background-color:#fff;">
-    <div class="row">
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-4 p-3">
             <div class="col"><b>My Chats</b></div>
             @foreach($chats as $chat)
+            @if (Auth::user()->username == $chat->sender || Auth::user()->username == $chat->reciver)
             <a id="la" class="nav-link" href="{{route('message', $chat->product_id)}}">
-                <div class="col d-flex mt-3">
-                    <div class="img col-md-2"><img src="{{ asset('img/p.jpg') }}"
+                <div class="col d-flex mt-3 justify-content-center align-items-center">
+                    <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
                             style="height: 50px; border-radius:50%"></div>
-                    <div class="des px-2"><b>g</b></div>
+                    <div class="des px-2"><b>{{$chat->title}}</b></div>
                 </div>
-            </a>                         
+            </a>
+            @endif
+
             @endforeach
+
+        </div>
+        <div class="col-md-8">
+            <p>Please Follow Our Policy while Doing chats</p>
         </div>
     </div>
 </div>
