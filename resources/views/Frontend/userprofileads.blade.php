@@ -35,7 +35,7 @@
                     <td><a href="{{ url('edituserads/' . $list->ads_id) }}" class="nav-link">Edit </a></td>
                     <td><a href="{{ url('edituserads/' . $list->ads_id) }}" class="nav-link">Delete</a></td>
 
-                    @endif
+                    @endif 
                 </tr>
                 @endforeach
 
