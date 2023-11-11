@@ -8,6 +8,7 @@
                         <th> Ads Price </th>
                         <th> Number </th>
                         <th> Status </th>
+                        <th> Selling Status </th>
                         <th> Posting Date </th>
                         <th colspan="3"> Action </th>
                     </tr>
@@ -25,6 +26,11 @@
                     <td>{{$list->price}} </td>
                     <td>{{$list->pos_number}} </td>
                     <td>{{$list->status_name}} </td>
+                    @if($list->availability == 1)
+                    <td>Avaiable</td>
+                    @else
+                    <td>Sold Out</td>
+                    @endif
                     <td>{{$list->created_at}} </td>
                     <td><a href="{{ url('edituserads/' . $list->ads_id) }}" class="nav-link">Edit </a></td>
                     <td><a href="{{ url('edituserads/' . $list->ads_id) }}" class="nav-link">Delete</a></td>

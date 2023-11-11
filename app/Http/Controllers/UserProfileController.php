@@ -132,7 +132,7 @@ class UserProfileController extends Controller
     {
         $data['location'] = location::orderBy('loc_id', 'DESC')->get();
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
-        $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
+        $data['status'] = status::orderBy('status_id', 'ASC')->limit(2)->get();
         $data['ads'] = postads::find($ads_id);
         return view('Frontend.useradsedit', $data);
     }
