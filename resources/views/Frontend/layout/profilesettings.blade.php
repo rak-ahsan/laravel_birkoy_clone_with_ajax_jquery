@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-md-2 p-3" style="border-right: 1px solid rgb(200, 200, 200)">
         <a href="{{route('userads')}}" class="nav-link">My Ads</a>
+        <a href="{{route('profile.edit')}}" class="nav-link">Update Profile</a>
 
         </div>
         <!-- mainpart -->

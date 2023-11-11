@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('mainphoto');
             $table->integer('price');
             $table->integer('ads_status');
+            $table->integer('availability');
             $table->string('nego')->default('off');
             $table->string('pos_number');
             $table->string('user_name');

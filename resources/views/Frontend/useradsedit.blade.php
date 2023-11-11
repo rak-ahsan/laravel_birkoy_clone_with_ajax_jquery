@@ -41,6 +41,24 @@
         </div>
         <hr>
         <div class="row" style="background-color: #fff">
+            <div class="top-f  d-flex justify-content-around align-items-center">
+                <div class="col-md-6">
+                    <label for="" class="text-end fw-bolder mt-5">Product Availability</label>
+                    <select class="form-select form-select-sm mt-3" aria-label="Small select example" name='availability'
+                            id="search">
+                            <option value="">Please Select Availability</option>
+                            @foreach ($status as $row)
+                            <option value="{{$row->status_id}}" {{$ads->availability == $row->status_id ? 'selected' : '' }}>
+                                {{$row->status_name}}</option>
+                            @endforeach
+                        </select>
+                        @error('availability')
+                        <p class="invalid-feedback d-block">Availability Is Requried</p>
+                        @enderror
+                </div>
+
+            </div>
+
             <div class="top-f  d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <label for="" class="text-end fw-bolder mt-5">Post Title</label>
@@ -50,7 +68,6 @@
                     <p class="invalid-feedback d-block text-center">Title Is Required</p>
                     @enderror
                 </div>
-
             </div>
             <label for="" class="text-center fw-bolder mt-3">Conditions</label>
             <div class="main d-flex justify-content-around align-items-center">
@@ -142,32 +159,7 @@
                 </div>
             </div>
             <hr>
-            <!-- <div class="form-floating d-flex justify-content-around align-items-center mb-3">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="mainphoto" class="form-label fw-bolder">Main Photo </label>
-                        <input class="form-control" type="file" id="mainphoto" name="mainphoto">
-                    </div>
-                    @error('mainphoto')
-                    <p class="invalid-feedback d-block text-center">Images Are Required and jpeg,png,jpg,gif,svg are
-                        allowed </p>
-                    @enderror
-                </div>
-
-            </div>
-            <div class="form-floating d-flex justify-content-around align-items-center mb-5">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label fw-bolder">Details Photos </label>
-                        <input class="form-control" type="file" id="formFile" name="images[]" multiple>
-                    </div>
-                    @error('images[]')
-                    <p class="invalid-feedback d-block text-center">Images Are Required and jpeg,png,jpg,gif,svg are
-                        allowed </p>
-                    @enderror
-                </div>
-            </div>
-            <hr> -->
+            
             <div class="form-floating d-flex justify-content-around align-items-center mb-5">
                 <div class="col-md-6">
                     <h6>Contact details</h6>

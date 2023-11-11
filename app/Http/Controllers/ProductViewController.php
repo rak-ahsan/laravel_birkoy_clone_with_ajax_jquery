@@ -43,14 +43,14 @@ class ProductViewController extends Controller
         ];
 
         like::create($data);
-        return redirect()->back();
+        return back();
     }
 
     public function dlike($id)
     {
         $data = Like::where('user_id', $id);
         $data->delete();
-        return redirect()->back();
+        return back();
     }
 
     public function comment($id, Request $request)

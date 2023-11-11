@@ -6,7 +6,7 @@
             @foreach($chats as $chat)
             @if (Auth::user()->username == $chat->sender || Auth::user()->username == $chat->reciver)
             <a id="la" class="nav-link" href="{{route('message', $chat->product_id)}}">
-                <div class="col d-flex mt-3 justify-content-center align-items-center">
+                <div class="col d-flex mt-3 align-items-center">
                     <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
                             style="height: 50px; border-radius:50%"></div>
                     <div class="des col-md-10 px-2"><b>{{$chat->title}}</b></div>
