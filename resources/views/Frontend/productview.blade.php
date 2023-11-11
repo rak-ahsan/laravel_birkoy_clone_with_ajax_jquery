@@ -91,10 +91,13 @@
                             <span id="rakib" class="d-none">{{$singelproduct->number}}</span>
                         </span>
                     </li>
-                    <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><a
+                    @if (Auth::user()->username !==$singelproduct->user_name)
+                        <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><a
                             class="nav-link active" aria-current="page" href="#"> <i class="fa-solid fa-comments fa-xl "
                                 style="color: #0b9a09; padding:5px"></i>Chats</a>
                     </li>
+                    @endif
+                    
                     <li class="list-group-item"><a class="nav-link active" aria-current="page"
                             href=" {{ route('userprofile',$singelproduct->username) }}"> <i
                                 class="fa-solid fa-user fa-xl" style="color: #0b9a09; padding:5px"></i>User Profile</a>

@@ -9,7 +9,7 @@
                 <div class="col d-flex mt-3 justify-content-center align-items-center">
                     <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
                             style="height: 50px; border-radius:50%"></div>
-                    <div class="des px-2"><b>{{$chat->title}}</b></div>
+                    <div class="des col-md-10 px-2"><b>{{$chat->title}}</b></div>
                 </div>
             </a>
             @endif
@@ -18,7 +18,7 @@
 
         </div>
         <div class="col-md-8">
-            <p>Please Follow Our Policy while Doing chats</p>
+            <p>Please Follow Our Policy while Chatting</p>
         </div>
     </div>
 </div>

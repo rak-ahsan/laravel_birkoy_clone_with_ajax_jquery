@@ -7,15 +7,14 @@
       </div> -->
             <div class="modal-body">
                 <div class="container">
-                    <p>Chat With Tushar</p>
+                    <p>Chat With {{$singelproduct->user_name}}</p>
                     <div class="row">
                         <div class="img col-md-2">
-                            <img src="{{ asset('img/p.jpg') }}" style="height: 100px;">
-                        </div>
+                            <img src="{{ asset('img/ads/'.$singelproduct->mainphoto) }}"
+                            style="height: 100px;">                        </div>
                         <div class="des col-md-4">
-                            <b>Vivo Y22s 6/128gb Full Box (Used)</b>
-                            <span>Uttara</span>
-                            <p>18000</p>
+                            <b>{{$singelproduct->title}}</b>
+                            <p>৳ {{$singelproduct->price}}</p>
                         </div>
                     </div>
                     <div class="container">
@@ -42,9 +41,9 @@
                             <div class="form-floating">
                                 <textarea class="form-control" name="message" placeholder="Leave a Message here" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2" >Message</label>
-                                <input type="text" value="{{$singelproduct->ads_id}}" name="product_id">
-                                <input type="text" value="{{$singelproduct->user_name}}" name="reciver">
-                                <input type="text" value="{{Auth::user()->username}}" name="sender">
+                                <input type="hidden" value="{{$singelproduct->ads_id}}" name="product_id">
+                                <input type="hidden" value="{{$singelproduct->user_name}}" name="reciver">
+                                <input type="hidden" value="{{Auth::user()->username}}" name="sender">
                             </div>
                             <div class="mt-3">
                                 <input type="submit" value="Send Message" class="btn btn-primary">
