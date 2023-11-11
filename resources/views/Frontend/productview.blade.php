@@ -45,7 +45,8 @@
                     <div class="like">
                         @if ($liker!== null && $liker->user_id == Auth::user()->id)
                         <a href="{{route('dlike',auth()->user()->id)}}" class="nav-link" onclick="dlike(event)">
-                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i> <span id="dlike">{{$like->count()}} </span>
+                            <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i>
+                             <span id="dlike">{{$like->count()}} </span>
                         </a>
                         @else
                         <a href="{{route('like',$singelproduct->ads_id)}}" class="nav-link">
