@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('user_img');
             $table->integer('membership')->default('1');
+            $table->integer('role')->default('2');
             $table->rememberToken();
             $table->timestamps();
         });

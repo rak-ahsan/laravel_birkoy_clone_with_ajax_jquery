@@ -7,7 +7,7 @@
       </div> -->
             <div class="modal-body">
                 <div class="container">
-                    <p>Chat With {{$singelproduct->user_name}}</p>
+                    <p>Chat With {{$singelproduct->name}}</p>
                     <div class="row">
                         <div class="img col-md-2">
                             <img src="{{ asset('img/ads/'.$singelproduct->mainphoto) }}"
