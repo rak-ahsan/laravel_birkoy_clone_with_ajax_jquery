@@ -71,8 +71,12 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
 
     // search
     Route::get('/search/{srting}', 'search')->name('search');
+
     //location
     Route::get('/location/{ads_loc}', 'location')->name('search');
+
+    // reportedads
+    Route::get('/reportedads', 'reportedads')->name('reportedads');
 });
 
 

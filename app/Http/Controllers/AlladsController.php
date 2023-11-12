@@ -7,6 +7,7 @@ use App\Models\image;
 use App\Models\location;
 use App\Models\Membership;
 use App\Models\postads;
+use App\Models\Report;
 use App\Models\status;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -143,8 +144,16 @@ class AlladsController extends Controller
             ->where('ads_status', 3)
             ->orderBy('ads_id', 'DESC')
             ->paginate(10);
-
         return view('backend.ads.pendingads', $data);
+    }
+
+    public function reportedads()
+    {
+        $data['ads'] = Report::join('postads', 'reports.ads_id', '=', 'postads.ads_id')
+            ->select('reports.*', 'postads.title')
+            ->orderBy('report_id', 'DESC')
+            ->paginate(10);
+        return view('backend.ads.reportedads.reportedads', $data);
     }
 
     public function adsedit($ads_id)

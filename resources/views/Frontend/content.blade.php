@@ -32,7 +32,7 @@
                 <i class="{{ $row->cata_icon }}" style="color: #117463; font-size:40px"></i>
             </div>
             <div class="t1 px-3 col-md-9">
-                <a href=" {{ route('username',$row->cata_username) }}" class="nav-link">
+                <a href=" {{ route('username',$row->cata_id) }}" class="nav-link">
                     {{$row->cata_name}} <br>
                     108,245 ads
                 </a>

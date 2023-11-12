@@ -99,7 +99,8 @@
               <div class="collapse" id="ui-ads">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route ('badsview')}}">All Ads</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{route ('pendingads')}}">pending Ads</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('pendingads')}}">Pending Ads</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route ('reportedads')}}">Reported Ads</a></li>
                 </ul>
               </div>
             </li>
