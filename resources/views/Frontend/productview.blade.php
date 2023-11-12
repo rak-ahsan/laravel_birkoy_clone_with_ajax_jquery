@@ -224,17 +224,65 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{route('report')}}" method="post" id="from">
+                    @csrf
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">please Describe In Details</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="reports" rows="3" name="reports"></textarea>
+                        <span id="msg" class="text-danger"></span>
+                        <input type="hidden" value="{{$singelproduct->ads_id}}" name="ads_id">
                     </div>
-                    <input type="submit" value="Report"  style="background-color: #ffc800" class="btn">
+                    <input type="submit" value="Report" id="sub" style="background-color: #ffc800" class="btn">
                 </form>
             </div>
         </div>
     </div>
 </div>
 @include('Frontend/layout/footer');
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#sub").click(function (e) {
+            e.preventDefault();
+            var form = $("#from")[0];
+            var formData = new FormData(form);
+            var reports = $("#reports").val();
+            if (reports == '' || reports.length>500) {
+                $('#msg').html('Please explain in Details In 500 Charectars');
+                return;
+            } else {
+                $('#msg').html('');
+            }
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('report') }}',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    $('#exampleModal').modal('hide')
+                        $('#from')[0].reset();
+                    Swal.fire(
+                'Report Recived',
+                'Thank you!!',
+                'success'
+                )
+                }
+            });
+        });
+
+
+    });
+
+
+
+</script>
 @endsection
  

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductViewController;
 use App\Http\Controllers\ChatModelController;
 use App\Http\Controllers\HomemodelController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,6 +68,12 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     //member request
     Route::post('/memberequest', 'memberequest')->name('memberequest');
     Route::get('/memberdelete/{mem_id}', 'destroy')->name('memberdelete');
+});
+
+
+Route::middleware('auth')->controller(ReportController::class)->group(function () {
+
+    Route::post('/report', 'store')->name('report');
 });
 
 
