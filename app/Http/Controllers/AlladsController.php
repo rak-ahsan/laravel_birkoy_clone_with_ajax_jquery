@@ -147,14 +147,7 @@ class AlladsController extends Controller
         return view('backend.ads.pendingads', $data);
     }
 
-    public function reportedads()
-    {
-        $data['ads'] = Report::join('postads', 'reports.ads_id', '=', 'postads.ads_id')
-            ->select('reports.*', 'postads.title')
-            ->orderBy('report_id', 'DESC')
-            ->paginate(10);
-        return view('backend.ads.reportedads.reportedads', $data);
-    }
+
 
     public function adsedit($ads_id)
     {

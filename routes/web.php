@@ -74,15 +74,15 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
 
     //location
     Route::get('/location/{ads_loc}', 'location')->name('search');
-
-    // reportedads
-    Route::get('/reportedads', 'reportedads')->name('reportedads');
 });
 
 
 Route::middleware('auth')->controller(ReportController::class)->group(function () {
 
     Route::post('/report', 'store')->name('report');
+    Route::get('/reportedads', 'reportedads')->name('reportedads');
+    Route::get('/reportup/{id}', 'reportup')->name('reportup');
+    Route::put('/reportups/{id}', 'reportups')->name('reportups');
 });
 
 
