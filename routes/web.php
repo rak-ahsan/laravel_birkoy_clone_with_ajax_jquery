@@ -68,6 +68,12 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     //member request
     Route::post('/memberequest', 'memberequest')->name('memberequest');
     Route::get('/memberdelete/{mem_id}', 'destroy')->name('memberdelete');
+
+    // search
+    Route::get('/search/{srting}', 'search')->name('search');
+    Route::get('searchs', function () {
+        return view('Frontend.layout.searchads');
+    });
 });
 
 

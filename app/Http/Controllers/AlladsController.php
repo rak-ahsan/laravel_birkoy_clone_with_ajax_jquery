@@ -167,7 +167,7 @@ class AlladsController extends Controller
 
         // $uads = postads::find($ads_id);
         // $uads->fill($request->post())->save();
-        
+
         $postadsModel = Postads::find($ads_id);
         $postadsModel->fill($request->all())->save();
 
@@ -192,5 +192,22 @@ class AlladsController extends Controller
         $data = Membership::where('mem_id', $mem_id);
         $data->delete();
         return back();
+    }
+
+    public function search($string)
+    {
+        $ads['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->where('title', 'LIKE', '%' . $string . '%')
+            ->where('ads_status', 4)
+            ->orWhere('price', 'LIKE', '%' . $string . '%')
+            ->get();
+
+        if (count($ads['ads']) > 0) {
+            return view('Frontend.layout.searchads', $ads);
+        } else {
+            return (0);
+        }
     }
 }
