@@ -3,9 +3,18 @@
 <div class="container shadow" style="background-color: #FFFFFF" id="t">
     <div class="row mt-5 border-bottom ">
         <div class="part1 justify-content-center align-items-center d-flex mt-4 row">
-            <div class="col-md-4">
-                <p style="font-size: 15px" id="loc"> <i class="fa-solid fa-location-dot fa-xl"
-                        style="color: #149777;"></i> <b>Select Location</b></p>
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-location-dot fa-xl my-3"
+                style="color: #149777;"></i>
+                        <select class="form-select form-select-sm"  name='ads_loc'
+                        id="location" style="border: 0px;   outline:0px;
+                        ">
+                        <option value=""><b>All Over Bangladesh</b></option>
+                        @foreach ($location as $row)
+                        <option value="{{$row->loc_id}}" {{ old('ads_loc') == $row->loc_id ? 'selected' : '' }}>
+                            {{$row->loc_name}}</option>
+                        @endforeach
+                    </select>
             </div>
             <div class="col-md-4">
                 <p style="font-size: 15px"> <i class="fa-solid fa-tag fa-rotate-90 fa-xl"
@@ -53,9 +62,10 @@
 <script>
    $(document).ready(function () {
     var originalContent = $('#data').html();
-
     $('#search').keyup(function (e) {
         let search = $('#search').val();
+        console.log(search);
+
         if (search === '') {
             $('#data').html(originalContent);
         } else {
@@ -63,6 +73,30 @@
                 type: "get",
                 url: "{{ url('search') }}/" + search,
                 success: function (res) {
+                    if (res == 0) {
+                        $('#data').html('<h1 style="color:red"> No Data Found </h1>');
+                    } else {
+                        $('#data').html(res);
+                    }
+                }
+            });
+        }
+    });
+
+
+// for location
+
+    var originalContent = $('#data').html();
+    $('#location').on('change', function (e) {
+        let ads_loc = $('#location').val();
+        if (ads_loc === '') {
+            $('#data').html(originalContent);
+        } else {
+            $.ajax({
+                type: "get",
+                url: "{{ url('location') }}/" + ads_loc,
+                success: function (res) {
+                    console.log(res);
                     if (res == 0) {
                         $('#data').html('<h1 style="color:red"> No Data Found </h1>');
                     } else {

@@ -21,6 +21,7 @@ class AlladsController extends Controller
     public function index()
     {
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(30);
+        $data['location'] = location::orderBy('loc_id', 'DESC')->get();
         $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
             ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
             ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
@@ -206,6 +207,24 @@ class AlladsController extends Controller
 
         if (count($ads['ads']) > 0) {
             return view('Frontend.layout.searchads', $ads);
+        } else {
+            return (0);
+        }
+    }
+
+    public function location($ads_loc)
+    {
+        // $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->paginate(30);
+        // $data['location'] = location::orderBy('loc_id', 'DESC')->get();
+        $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
+            ->join('catagories', 'postads.ads_cata', '=', 'catagories.cata_id')
+            ->select('postads.*', 'locations.loc_name', 'catagories.cata_name')
+            ->orderBy('ads_id', 'DESC')
+            ->where('ads_status', 4)
+            ->Where('ads_loc', $ads_loc)
+            ->paginate(30);
+        if (count($data['ads']) > 0) {
+            return view('Frontend.layout.searchads', $data);
         } else {
             return (0);
         }

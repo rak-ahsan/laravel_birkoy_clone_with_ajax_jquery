@@ -71,9 +71,8 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
 
     // search
     Route::get('/search/{srting}', 'search')->name('search');
-    Route::get('searchs', function () {
-        return view('Frontend.layout.searchads');
-    });
+    //location
+    Route::get('/location/{ads_loc}', 'location')->name('search');
 });
 
 
