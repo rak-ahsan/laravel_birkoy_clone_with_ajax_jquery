@@ -1,5 +1,6 @@
 @extends('Frontend.layout.Head')
 @section('content')
+@if($singelproduct)
 <div class="container" style="background-color: #fff;">
     <div class="row mt-3">
         <div class="porduct_title col-md-6 mt-3">
@@ -43,7 +44,7 @@
                     <span class="text-p">Tk {{$singelproduct->price}}</span>
                     <span class="px-3">Negotiable</span>
                     <div class="like">
-                        @if ($liker!== null && $liker->user_id == Auth::user()->id)
+                        @if ($liker!== null && $liker->user_id == Auth::user()->id && $liker->product_id == $singelproduct->ads_id)
                         <a href="{{route('dlike',auth()->user()->id)}}" class="nav-link" onclick="dlike(event)">
                             <i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i>
                              <span id="dlike">{{$like->count()}} </span>
@@ -284,5 +285,13 @@
 
 
 </script>
+@else
+<div class="container">
+    <div class="row vh-100 align-items-center justify-content-center">
+        <h1 class="text-center text-danger">Product Pending OR Sold Out </h1>
+    </div>
+</div>
+
+@endif
 @endsection
  

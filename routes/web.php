@@ -111,8 +111,10 @@ Route::middleware('auth')->controller(UserProfileController::class)->group(funct
     Route::get('/userprofile/{username}', 'index')->name('userprofile');
     // settings
     Route::get('/usersetting/ads', 'userads')->name('userads');
+    Route::get('/usersetting/saveads', 'saveads')->name('saveads');
     Route::get('/edituserads/{ads_id}', 'useradsedit')->name('edituserads');
     Route::get('/usersetting', 'settings')->name('settings');
+    Route::put('/upads/{ads_id}', 'bupdate')->name('upads');
 
     // membership
     Route::get('/edit/{username}', 'getuser')->name('getuser');

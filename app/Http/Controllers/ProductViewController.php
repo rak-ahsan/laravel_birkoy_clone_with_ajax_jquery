@@ -32,7 +32,10 @@ class ProductViewController extends Controller
                 'users.email',
                 'users.number',
                 'users.username'
-            )->find($post);
+            )
+            ->where('ads_status', 4)
+            ->where('availability', 1)
+            ->find($post);
         return view('Frontend.productview', $data);
     }
 
