@@ -1,6 +1,4 @@
 
-
-
 @extends('Frontend.layout.profilesettings')
 @section('profile')
 <div class="py-12">

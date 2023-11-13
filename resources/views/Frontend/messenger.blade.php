@@ -24,7 +24,7 @@
                 @endif
             @endforeach
         </ul>
-
+    @if($chat->availability==1)
         <form action="{{ route('chatstore') }}" method="post">
             @csrf
             <div class="col-md-12">
@@ -38,6 +38,9 @@
                 <button type="submit" class="btn btn-success px-5">Send Message</button>
             </div>
         </form>
+        @else
+            <b>Product Sold Out </b>
+        @endif
     </div>
 </div>
 

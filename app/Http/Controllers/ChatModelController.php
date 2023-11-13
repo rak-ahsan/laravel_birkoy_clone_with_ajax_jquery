@@ -54,10 +54,9 @@ class ChatModelController extends Controller
 
     public function loadmsg($product_id)
     {
-        $data['chats'] = message::where('product_id', $product_id)->get();
-
-        // return dd($data);
-
+        $data['chats'] = message::where('product_id', $product_id)
+        ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
+        ->get();
 
         return view('Frontend/messenger', $data);
     }

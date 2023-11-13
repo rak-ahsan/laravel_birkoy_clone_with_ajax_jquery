@@ -19,6 +19,10 @@
                         @endif
                         <span><b>80% Positive Rating</b></span>
                     </div>
+                    <div class="rating d-flex justify-content-around text-center">
+                       <a href="#"><p class="btn btn-success">1</p></a> 
+                       <a href="#"><p class="btn btn-danger">1</p></a> 
+                    </div>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Member Since : Jan 2023</li>
