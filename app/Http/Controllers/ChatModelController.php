@@ -6,6 +6,7 @@ use App\Models\ChatModel;
 use App\Models\message;
 use App\Models\postads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ChatModelController extends Controller
@@ -15,12 +16,9 @@ class ChatModelController extends Controller
      */
     public function index()
     {
-        $data['chats'] = Message::select('messages.*', 'postads.*')
-            ->groupBy('messages.product_id')
+        $data['chats'] = Message::groupBy('sender', 'product_id')
             ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
             ->get();
-
-        // return dd($data);
 
         return view('Frontend/chatlist', $data);
     }
@@ -52,11 +50,13 @@ class ChatModelController extends Controller
         return back();
     }
 
-    public function loadmsg($product_id)
+    public function loadmsg($product_id, $sender)
     {
         $data['chats'] = message::where('product_id', $product_id)
-        ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
-        ->get();
+            ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
+            ->get();
+        $data['sender'] = $sender;
+        // return dd($data);
 
         return view('Frontend/messenger', $data);
     }

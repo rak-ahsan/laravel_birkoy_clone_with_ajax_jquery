@@ -138,7 +138,7 @@ Route::middleware('auth')->controller(ChatModelController::class)->group(functio
 
     Route::get('/chat', 'index')->name('chat');
     Route::post('/chat', 'store')->name('chatstore');
-    Route::get('/message/{product_id}', 'loadmsg')->name('message');
+    Route::get('/message/{product_id}/{sender}', 'loadmsg')->name('message');
 });
 
 Route::middleware(['auth', 'role'])->controller(CatagoriesController::class)->group(function () {
