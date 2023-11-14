@@ -23,7 +23,7 @@ class ProductViewController extends Controller
             ->orderby('comment_id', 'DESC')
             ->get();
 
-        $data['liker'] = Like::where('user_id', auth()->user()->id)->first();
+        $data['liker'] = Like::where('user_id', auth()->user()->id)->where('product_id', $post)->first();
         $data['singelproduct'] = postads::join('users', 'users.username', '=', 'postads.user_name')
             ->join('locations', 'postads.ads_loc', '=', 'locations.loc_id')->select(
                 'postads.*',
