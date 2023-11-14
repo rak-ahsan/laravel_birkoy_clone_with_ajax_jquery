@@ -136,7 +136,12 @@ class UserProfileController extends Controller
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
         $data['status'] = status::orderBy('status_id', 'ASC')->limit(2)->get();
         $data['ads'] = postads::find($ads_id);
-        return view('Frontend.useradsedit', $data);
+
+        if (Auth::user()->username == $data['ads']->user_name) {
+            return view('Frontend.useradsedit', $data);
+        } else {
+            return back();
+        }
     }
 
     public function saveads()
@@ -150,22 +155,21 @@ class UserProfileController extends Controller
 
     public function bupdate(Request $request, $ads_id)
     {
-        if (Auth::check()) {
 
-            $validator = Validator::make($request->all(), [
-                'title' => 'required',
-                'pos_number' => 'required',
-                'ads_status' => 'required'
-            ]);
 
-            if ($validator->fails()) {
-                return redirect()->route('editads', $ads_id)->withErrors($validator)->withInput();
-            }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'pos_number' => 'required',
+            'ads_status' => 'required'
+        ]);
 
-            $postadsModel = Postads::find($ads_id);
-            $postadsModel->fill($request->all())->save();
-
-            return back();
+        if ($validator->fails()) {
+            return redirect()->route('editads', $ads_id)->withErrors($validator)->withInput();
         }
+
+        $postadsModel = Postads::find($ads_id);
+        $postadsModel->fill($request->all())->save();
+
+        return back();
     }
 }

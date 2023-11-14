@@ -12,20 +12,15 @@
                     <div class="card-subtitle mb-2 text-body-secondary">
                         @if ($user->membership == 2)
                         <img src=" {{ asset ('img/memberbadge.png') }}" alt="" srcset="" class="img-fluid"
-                            style="width:80px">
+                            style="width:80px"><b>Paid Member</b>
                         @else
                         <img src=" {{ asset ('img/freemember.png') }}" alt="" srcset="" class="img-fluid"
-                            style="width:80px">
+                            style="width:80px"><b>Free Member</b>
                         @endif
-                        <span><b>80% Positive Rating</b></span>
-                    </div>
-                    <div class="rating d-flex justify-content-around text-center">
-                       <a href="#"><p class="btn btn-success">1</p></a> 
-                       <a href="#"><p class="btn btn-danger">1</p></a> 
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Member Since : Jan 2023</li>
+                    <li class="list-group-item">Member Since: {{ auth()->user()->created_at->format('F Y') }}</li>
                     <li class="list-group-item">Phone Number : {{$user->number}}</li>
                     <li class="list-group-item">Email Address : {{$user->email}}</li>
                     <li class="list-group-item">Location: {{$user->loc_name}}</li>

@@ -1,6 +1,7 @@
 @extends('Frontend.layout.Head')
 @section('content')
 <div class="container">
+    @if(Auth::user()->username == $ads->user_name)
     <form method="POST" enctype="multipart/form-data" action="{{ route('upads', ['ads_id' => $ads->ads_id]) }}">
         @csrf
         @method('put')
@@ -199,6 +200,9 @@
             </div>
         </div>
     </form>
+    @else
+    <span>Access Dinied</span>
+    @endif
 </div>
 @endsection
 
