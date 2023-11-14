@@ -10,7 +10,7 @@
                 <div class="col d-flex mt-3 align-items-center">
                     <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
                             style="height: 50px; border-radius:50%"></div>
-                    <div class="des col-md-10 px-2"><b>{{$chat->title}} <br> {{$chat->sender}}</b></div>
+                    <div class="des col-md-10 px-2"><b>{{$chat->title}} <br><small> {{$chat->sender}}</small>d</b></div>
                 </div>
             </a>
             @else
@@ -18,7 +18,7 @@
                 <div class="col d-flex mt-3 align-items-center">
                     <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
                             style="height: 50px; border-radius:50%"></div>
-                    <div class="des col-md-10 px-2"><b>{{$chat->title}} <br> {{$chat->reciver}}</b></div>
+                    <div class="des col-md-10 px-2"><b>{{$chat->title}} <br> <small>{{$chat->reciver}}</small></b></div>
                 </div>
             </a>
             @endif

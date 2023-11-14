@@ -35,12 +35,12 @@
                 <textarea class="form-control" placeholder="Enter Message" id="floatingTextarea2"
                     style="height: 100px" name="message"></textarea>
                 {{-- @if(auth::user()->username == $chat->sender) --}}
-                <input type="text" value="{{ $sender }}" name="reciver">
+                <input type="hidden" value="{{ $sender }}" name="reciver">
                 {{-- @else --}}
                 {{-- <input type="text" value="{{ $chat->sender }}" name="reciver"> --}}
                 {{-- @endif --}}
-                <input type="text" value="{{ Auth::user()->username }}" name="sender">
-                <input type="text" value="{{ $chat->product_id }}" name="product_id">
+                <input type="hidden" value="{{ Auth::user()->username }}" name="sender">
+                <input type="hidden" value="{{ $chat->product_id }}" name="product_id">
             </div>
             <div class="mt-3 text-end">
                 <button type="submit" class="btn btn-success px-5">Send Message</button>
