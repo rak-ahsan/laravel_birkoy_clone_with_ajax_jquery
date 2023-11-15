@@ -19,6 +19,7 @@ class ChatModelController extends Controller
         $data['chats'] = Message::groupBy('sender', 'product_id')
             ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
             ->get();
+        // return dd($data);
 
         return view('Frontend/chatlist', $data);
     }
@@ -54,9 +55,9 @@ class ChatModelController extends Controller
     {
         $data['chats'] = message::where('product_id', $product_id)
             ->join('postads', 'postads.ads_id', '=', 'messages.product_id')
+            ->select('messages.*', 'postads.availability')
             ->get();
         $data['sender'] = $sender;
-        // return dd($data);
 
         return view('Frontend/messenger', $data);
     }

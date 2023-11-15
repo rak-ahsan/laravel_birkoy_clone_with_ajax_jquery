@@ -9,15 +9,16 @@
             <a id="la" class="nav-link" href="{{ route('message', [$chat->product_id, $chat->sender]) }}">
                 <div class="col d-flex mt-3 align-items-center">
                     <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
-                            style="height: 50px; border-radius:50%"></div>
+                            style="height: 50px; width:50px; border-radius:50%"></div>
                     <div class="des col-md-10 px-2"><b>{{$chat->title}} <br><small> {{$chat->sender}}</small>d</b></div>
                 </div>
             </a>
+            @elseif(Auth::user()->username == $chat->user_name)
             @else
             <a id="la" class="nav-link" href="{{ route('message', [$chat->product_id, $chat->reciver]) }}">
                 <div class="col d-flex mt-3 align-items-center">
                     <div class="img col-md-2"><img src="{{ asset('img/ads/'.$chat->mainphoto) }}"
-                            style="height: 50px; border-radius:50%"></div>
+                            style="height: 50px; width:50px; border-radius:50%"></div>
                     <div class="des col-md-10 px-2"><b>{{$chat->title}} <br> <small>{{$chat->reciver}}</small></b></div>
                 </div>
             </a>

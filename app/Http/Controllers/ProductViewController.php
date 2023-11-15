@@ -57,6 +57,14 @@ class ProductViewController extends Controller
         return back();
     }
 
+    public function remove($id)
+    {
+        $data = Like::where('product_id', $id);
+        $data->delete();
+        return back();
+    }
+
+
     public function comment($id, Request $request)
     {
         $data = [

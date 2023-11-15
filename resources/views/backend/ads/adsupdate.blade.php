@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Status</label>
-                <select class="form-select" aria-label="Default select example" name="ads_status">
+                <select class="form-select" aria-label="Default select example" name="ads_status" style="font-size: 0.8125rem">
                     <option selected>Open this select menu</option>
                     @foreach ($status as $list)
                     <option value="{{$list->status_id}}" {{ $list->status_id == $ads->ads_status ? 'selected' : '' }}>

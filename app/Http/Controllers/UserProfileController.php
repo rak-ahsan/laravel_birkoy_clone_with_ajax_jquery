@@ -170,6 +170,6 @@ class UserProfileController extends Controller
         $postadsModel = Postads::find($ads_id);
         $postadsModel->fill($request->all())->save();
 
-        return back();
+        return redirect('usersetting/ads');
     }
 }

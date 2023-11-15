@@ -100,6 +100,7 @@ Route::middleware('auth')->controller(ProductViewController::class)->group(funct
     // like
     Route::get('like/{id}', 'like')->name('like');
     Route::get('dlike/{id}', 'dlike')->name('dlike');
+    Route::get('remove/{id}', 'remove')->name('remove');
     // comment
     Route::get('comment/{id}', 'comment')->name('comment');
     Route::get('dcomment/{id}', 'dcomment')->name('dcomment');

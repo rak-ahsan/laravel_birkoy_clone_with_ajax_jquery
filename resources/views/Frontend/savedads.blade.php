@@ -23,7 +23,7 @@
                     <td>{{$list->price}} </td>
                     <td>{{$list->pos_number}} </td>
                     <td><a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link" title="View"><i class="fa-solid fa-eye"></i> </a></td>
-                    <td><a href="{{route('dlike',auth()->user()->id)}}" class="nav-link"><i class="fa-solid fa-trash"></i></a></td>
+                    <td><a href="{{url('remove/' . $list->ads_id)}}" class="nav-link"><i class="fa-solid fa-trash"></i></a></td>
 
                     @endif 
                 </tr>
