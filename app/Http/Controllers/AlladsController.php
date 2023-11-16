@@ -13,6 +13,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class AlladsController extends Controller
 {
@@ -46,7 +47,7 @@ class AlladsController extends Controller
         $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
         return view('Frontend.addspost', $data);
     }
- 
+
     /**
      * Store a newly created resource in storage.
      */
@@ -107,24 +108,6 @@ class AlladsController extends Controller
         return view('Frontend.adsupdate.viewads');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    // for backend
-
     public function alladsview()
     {
         $data['ads'] = postads::join('locations', 'postads.ads_loc', '=', 'locations.loc_id')
@@ -156,6 +139,19 @@ class AlladsController extends Controller
         return view('backend.ads.adsupdate', $data);
     }
 
+    public function adsdistroy($ads_id)
+    {
+        $data = postads::find($ads_id);
+        File::delete('img/ads/' . $data->mainphoto);
+        $images = image::where('ads_id', $ads_id)->get();
+        foreach ($images as $image) {
+            File::delete('img/ads/' . $image->imagename);
+        }
+        $data->delete();
+
+        return back();
+    }
+
     public function bupdate(Request $request, $ads_id)
     {
         $validator = Validator::make($request->all(), [
@@ -176,6 +172,7 @@ class AlladsController extends Controller
 
         return back();
     }
+
     public function memberequest(Request $request)
     {
 

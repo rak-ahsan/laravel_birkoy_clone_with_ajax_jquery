@@ -29,7 +29,7 @@
                     <td> free </td>
                     <td>{{$list->created_at}} </td>
                     <td><a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link"><i class="mdi mdi-eye"></i> </a></td>
-                    <td><a href="{{ url('productview/' . $list->ads_id) }}" class="nav-link"><i class="mdi mdi-delete"></i> </a></td>
+                    <td><a href="{{ url('adsdistroy/' . $list->ads_id) }}" class="nav-link"><i class="mdi mdi-delete"></i> </a></td>
                 </tr>
                 @endforeach
                 <tbody>

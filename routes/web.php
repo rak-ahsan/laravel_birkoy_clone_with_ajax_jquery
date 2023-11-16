@@ -73,7 +73,7 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     Route::get('/search/{srting}', 'search')->name('search');
 
     //location
-    Route::get('/location/{ads_loc}', 'location')->name('search');
+    Route::get('/location/{ads_loc}', 'location')->name('location');
 });
 
 
@@ -91,6 +91,7 @@ Route::middleware(['auth', 'role'])->controller(AlladsController::class)->group(
     Route::get('/pendingads', 'pendingads')->name('pendingads');
     Route::get('/editads/{ads_id}', 'adsedit')->name('editads');
     Route::put('/upads/{ads_id}', 'bupdate')->name('upads');
+    Route::get('/adsdistroy/{ads_id}', 'adsdistroy')->name('adsdistroy');
 });
 
 
