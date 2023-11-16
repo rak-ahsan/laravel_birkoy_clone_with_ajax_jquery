@@ -46,7 +46,7 @@ class AlladsController extends Controller
         $data['status'] = status::orderBy('status_id', 'DESC')->limit(2)->get();
         return view('Frontend.addspost', $data);
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
