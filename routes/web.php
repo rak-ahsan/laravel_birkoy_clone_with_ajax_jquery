@@ -151,5 +151,9 @@ Route::middleware(['auth', 'role'])->controller(CatagoriesController::class)->gr
     Route::get('/category/{cata_id}/edit', 'show')->name('category.show');
     Route::post('/category/{cata_id}', 'update')->name('category.update');
     Route::get('/category/destroy/{cata_id}', 'destroy')->name('category.destroy');
+
+
+    // dashboard
+    Route::get('dashboard', 'dashboard');
 });
 require __DIR__ . '/auth.php';

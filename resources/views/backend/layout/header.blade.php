@@ -4,10 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Bikroy Admin Panel</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('db/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('db/assets/vendors/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet" href="{{ asset('db/assets/ve/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('db/assets/ve/css/vendor.bundle.base.css')}}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -73,7 +73,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
+              <a class="nav-link" href="dashboard">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -82,7 +82,7 @@
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Catagories</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                <i class="mdi mdi-filter"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
@@ -94,7 +94,7 @@
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-ads" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Ads</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                <i class="mdi mdi-apps"></i>
               </a>
               <div class="collapse" id="ui-ads">
                 <ul class="nav flex-column sub-menu">
@@ -109,7 +109,7 @@
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Members</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                <i class="mdi mdi-account-multiple"></i>
               </a>
               <div class="collapse" id="ui-user">
                 <ul class="nav flex-column sub-menu">
@@ -143,7 +143,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ asset('db/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('db/assets/ve/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
