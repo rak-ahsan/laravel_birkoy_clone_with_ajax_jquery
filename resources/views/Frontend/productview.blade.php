@@ -51,7 +51,11 @@
             <div class="row ">
                 <div class="price-part justify-content-start align-items-center d-flex mt-3">
                     <span class="text-p">Tk {{$singelproduct->price}}</span>
+                    @if($singelproduct->nego == 'on') 
                     <span class="px-3">Negotiable</span>
+                    @else
+                    <span class="px-3">Fixed</span>
+                    @endif
                     <div class="like">
                         @if ($liker!== null && $liker->user_id == Auth::user()->id)
                         <a href="{{route('dlike',auth()->user()->id)}}" class="nav-link" onclick="dlike(event)">
