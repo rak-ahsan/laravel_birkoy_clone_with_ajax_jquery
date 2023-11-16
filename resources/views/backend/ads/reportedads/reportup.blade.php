@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Status</label>
-                <select class="form-select" aria-label="Default select example" name="status">
+                <select class="form-select" aria-label="Default select example" name="status" style="font-size: 0.8125rem">
                     <option selected>Open this select menu</option>
                     <option value="0"  {{ 0 == $ads->status ? 'selected' : '' }}>Pending</option>
                     <option value="1"  {{ 1 == $ads->status ? 'selected' : '' }}>Resolved</option>

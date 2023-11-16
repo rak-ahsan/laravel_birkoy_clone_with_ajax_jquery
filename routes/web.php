@@ -100,7 +100,7 @@ Route::middleware('auth')->controller(ProductViewController::class)->group(funct
     // like
     Route::get('like/{id}', 'like')->name('like');
     Route::get('dlike/{id}', 'dlike')->name('dlike');
-
+    Route::get('remove/{id}', 'remove')->name('remove');
     // comment
     Route::get('comment/{id}', 'comment')->name('comment');
     Route::get('dcomment/{id}', 'dcomment')->name('dcomment');
@@ -111,8 +111,10 @@ Route::middleware('auth')->controller(UserProfileController::class)->group(funct
     Route::get('/userprofile/{username}', 'index')->name('userprofile');
     // settings
     Route::get('/usersetting/ads', 'userads')->name('userads');
+    Route::get('/usersetting/saveads', 'saveads')->name('saveads');
     Route::get('/edituserads/{ads_id}', 'useradsedit')->name('edituserads');
     Route::get('/usersetting', 'settings')->name('settings');
+    Route::put('/upads/{ads_id}', 'bupdate')->name('upads');
 
     // membership
     Route::get('/edit/{username}', 'getuser')->name('getuser');
@@ -137,7 +139,7 @@ Route::middleware('auth')->controller(ChatModelController::class)->group(functio
 
     Route::get('/chat', 'index')->name('chat');
     Route::post('/chat', 'store')->name('chatstore');
-    Route::get('/message/{product_id}', 'loadmsg')->name('message');
+    Route::get('/message/{product_id}/{sender}', 'loadmsg')->name('message');
 });
 
 Route::middleware(['auth', 'role'])->controller(CatagoriesController::class)->group(function () {

@@ -23,7 +23,7 @@ class ProductViewController extends Controller
             ->orderby('comment_id', 'DESC')
             ->get();
 
-        $data['liker'] = Like::where('user_id', auth()->user()->id)->first();
+        $data['liker'] = Like::where('user_id', auth()->user()->id)->where('product_id', $post)->first();
         $data['singelproduct'] = postads::join('users', 'users.username', '=', 'postads.user_name')
             ->join('locations', 'postads.ads_loc', '=', 'locations.loc_id')->select(
                 'postads.*',
@@ -32,7 +32,10 @@ class ProductViewController extends Controller
                 'users.email',
                 'users.number',
                 'users.username'
-            )->find($post);
+            )
+            ->where('ads_status', 4)
+            ->where('availability', 1)
+            ->find($post);
         return view('Frontend.productview', $data);
     }
 
@@ -53,6 +56,14 @@ class ProductViewController extends Controller
         $data->delete();
         return back();
     }
+
+    public function remove($id)
+    {
+        $data = Like::where('product_id', $id);
+        $data->delete();
+        return back();
+    }
+
 
     public function comment($id, Request $request)
     {

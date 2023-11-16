@@ -1,5 +1,6 @@
 @extends('Frontend.layout.Head')
 @section('content')
+@if($singelproduct)
 <div class="container" style="background-color: #fff;">
     <div class="row mt-3">
         <div class="porduct_title col-md-6 mt-3">
@@ -23,6 +24,7 @@
     </div>
     <div class="row py-3 shadow-5">
         <div class="col-md-8 scrollbar-auto">
+            @if($img == null)
             <div class="col-12 mb-1">
                 <div class="lightbox">
                     <img src="{{ asset('img/ads/'.$img[0]->imagename) }}" alt="Gallery image 1"
@@ -37,6 +39,14 @@
                 </div>
                 @endforeach
             </div>
+            @else
+                <div class="col-12 mb-1">
+                    <div class="lightbox">
+                        <img src="{{ asset('img/ads/'.$singelproduct->mainphoto) }}" alt="Gallery image 1"
+                            class="ecommerce-gallery-main-img active w-100" id="fullimg" style="height: 800px" />
+                    </div>
+                </div> 
+            @endif
 
             <div class="row ">
                 <div class="price-part justify-content-start align-items-center d-flex mt-3">
@@ -284,5 +294,13 @@
 
 
 </script>
+@else
+<div class="container">
+    <div class="row vh-100 align-items-center justify-content-center">
+        <h1 class="text-center text-danger">Product Pending OR Sold Out </h1>
+    </div>
+</div>
+
+@endif
 @endsection
  

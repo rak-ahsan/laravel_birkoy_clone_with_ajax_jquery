@@ -27,7 +27,7 @@
             @endphp
             <div class="form-group">
                 <label for="exampleInputEmail1">Status</label>
-                <select class="form-select" aria-label="Default select example" name="membership">
+                <select class="form-select" aria-label="Default select example" name="membership" style="font-size: 0.8125rem">
                     <option selected>Open this select menu</option>
                     <option value="1" {{ $value == $user->membership ? 'selected' : '' }}>Free</option>
                     <option value="2" {{ $values == $user->membership ? 'selected' : '' }}>Paid</option>

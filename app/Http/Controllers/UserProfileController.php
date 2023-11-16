@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Catagories;
+use App\Models\Like;
 use App\Models\location;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Membership;
@@ -134,6 +136,40 @@ class UserProfileController extends Controller
         $data['catagory'] = Catagories::orderBy('cata_id', 'DESC')->get();
         $data['status'] = status::orderBy('status_id', 'ASC')->limit(2)->get();
         $data['ads'] = postads::find($ads_id);
-        return view('Frontend.useradsedit', $data);
+
+        if (Auth::user()->username == $data['ads']->user_name) {
+            return view('Frontend.useradsedit', $data);
+        } else {
+            return back();
+        }
+    }
+
+    public function saveads()
+    {
+        $data['ads'] = Like::join('postads', 'postads.ads_id', '=', 'likes.product_id')
+            ->paginate(10);
+
+        return view('Frontend.savedads', $data);
+    }
+
+
+    public function bupdate(Request $request, $ads_id)
+    {
+
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'pos_number' => 'required',
+            'ads_status' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('editads', $ads_id)->withErrors($validator)->withInput();
+        }
+
+        $postadsModel = Postads::find($ads_id);
+        $postadsModel->fill($request->all())->save();
+
+        return redirect('usersetting/ads');
     }
 }

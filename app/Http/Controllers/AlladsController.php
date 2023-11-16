@@ -95,7 +95,7 @@ class AlladsController extends Controller
             }
         }
 
-        return redirect()->route('adspost');
+        return redirect()->route('userprofile', Auth::user()->username);
     }
 
 
