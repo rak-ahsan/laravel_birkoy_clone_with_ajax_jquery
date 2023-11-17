@@ -64,6 +64,8 @@ Route::middleware('auth')->controller(AlladsController::class)->group(function (
     Route::get('/post-add', 'adspost')->name('adspost');
     Route::post('/poststore', 'store')->name('adstore');
     Route::get('/adsview', 'view')->name('adsview');
+    Route::get('/limit', 'adslimit')->name('limit');
+    Route::put('/adslimitup/{limits_id}', 'adslimitup')->name('adslimitup');
 
     //member request
     Route::post('/memberequest', 'memberequest')->name('memberequest');

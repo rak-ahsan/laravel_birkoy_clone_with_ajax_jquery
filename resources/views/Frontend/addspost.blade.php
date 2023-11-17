@@ -198,14 +198,17 @@
                         <label class="form-check-label" for="flexCheckIndeterminate">
                             I have read and accept the Terms and Conditions </label>
                     </div>
+                    @php
+                       $limit =  App\Models\adslimit::first()
+                    @endphp
                     @if($membership==1)
                     <div class="1"> 
-                    @if ($adsnum < 10)
-                    You're a freemember Your Ads Limits 10 You Can Post {{ 10 - $adsnum }} More Ads </b></p>
+                    @if ($adsnum < $limit->limit)
+                    You're a freemember Your Ads Limits {{$limit->limit}} You Can Post {{ $limit->limit - $adsnum }} More Ads </b></p>
                     <div class="mt-3 text-end">
                         <button type="submit" class="btn btn-success px-5">Post ad</button>
                     </div>
-                    @elseif($adsnum >= 10)
+                    @elseif($adsnum >= $limit->limit)
                     <div class="mt-3 text-end">
                         <a href="#" class="btn btn-success px-5 text-dark nav-link p-2" style="background-color: #ffc800" data-bs-toggle="modal" data-bs-target="#exampleModal">Limit Reach To Post More Ads Buy Membership</a>
                     </div>

@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catagories;
+use App\Models\User;
 use App\Models\image;
-use App\Models\location;
-use App\Models\Membership;
-use App\Models\postads;
 use App\Models\Report;
 use App\Models\status;
-use App\Models\User;
+use App\Models\postads;
+use App\Models\adslimit;
+use App\Models\location;
+use App\Models\Catagories;
+use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class AlladsController extends Controller
 {
@@ -227,5 +228,18 @@ class AlladsController extends Controller
         } else {
             return (0);
         }
+    }
+
+    public function adslimit()
+    {
+        $data['limit'] = adslimit::first();
+        return view('backend.ads.adslimit', $data);
+    }
+
+    public function adslimitup(Request $request, $limits_id)
+    {
+        $data = adslimit::find(1);
+        $data->fill($request->all())->save();
+        return back();
     }
 }
