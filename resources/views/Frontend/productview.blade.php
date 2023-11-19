@@ -24,7 +24,7 @@
     </div>
     <div class="row py-3 shadow-5">
         <div class="col-md-8 scrollbar-auto">
-            @if($img == null)
+            @if($img)
             <div class="col-12 mb-1">
                 <div class="lightbox">
                     <img src="{{ asset('img/ads/'.$img[0]->imagename) }}" alt="Gallery image 1"

@@ -17,6 +17,7 @@ class ProductViewController extends Controller
     public function index($post)
     {
         $data['img'] = image::where('ads_id', $post)->get();
+        // return dd($data);
         $data['like'] = Like::where('product_id', $post)->get();
         $data['comment'] = comment::where('product_id', $post)
             ->join('users', 'users.id', '=', 'comments.user_id')
