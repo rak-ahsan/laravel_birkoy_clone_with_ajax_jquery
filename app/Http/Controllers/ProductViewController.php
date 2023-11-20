@@ -39,7 +39,7 @@ class ProductViewController extends Controller
             ->find($post);
         return view('Frontend.productview', $data);
     }
-
+ 
     public function like($id)
     {
         $data = [
