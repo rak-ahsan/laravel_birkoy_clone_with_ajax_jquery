@@ -21,4 +21,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: "cd /var/www/html && sh ./.scripts/deploy.sh"
+          script: "cd /laravel.rakibahsan.xyz&& sh ./.scripts/deploy.sh"
